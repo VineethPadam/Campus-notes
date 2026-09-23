@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import confetti from 'canvas-confetti';
 import {
   Lock,
   Download,
@@ -21,8 +20,8 @@ import RazorpayButton from './components/RazorpayButton';
 export default function NotesPage() {
   const [activeTab, setActiveTab] = useState<'syllabus' | 'sample'>('syllabus');
 
-  const notesTitle = process.env.NEXT_PUBLIC_NOTES_TITLE || 'Spring Boot & JPA Complete Masterclass Notes';
-  const priceINR = process.env.NEXT_PUBLIC_NOTES_PRICE_INR || '99';
+  const notesTitle = process.env.NEXT_PUBLIC_NOTES_TITLE || 'Java Programming Language — Complete Handwritten Notes';
+  const priceINR = process.env.NEXT_PUBLIC_NOTES_PRICE_INR || '89';
 
   return (
     <div className="min-h-screen bg-[#0b0f17] text-gray-100 flex flex-col justify-between">
@@ -58,16 +57,16 @@ export default function NotesPage() {
         <section className="text-center space-y-6 pt-4">
           <div className="inline-flex items-center space-x-2 bg-slate-900/80 border border-slate-700/60 px-4 py-1.5 rounded-full text-xs text-gray-300">
             <Sparkles className="w-4 h-4 text-emerald-400 animate-pulse" />
-            <span>2026 Edition • Complete Spring Boot, JPA & AOP Placement Notes</span>
+            <span>2026 Edition • Complete Java Core, OOPs & JVM Memory Placement Notes</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
-            Master Spring Boot & JPA with <br className="hidden sm:block" />
-            <span className="gradient-text">Complete Handwritten & PDF Notes</span>
+            Master Java & OOPs with <br className="hidden sm:block" />
+            <span className="gradient-text">Complete Handwritten Notes</span>
           </h1>
 
           <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
-            85+ pages covering Spring Core, IoC, Dependency Injection, Annotations, Spring Data JPA, Hibernate Entity Lifecycles, SOLID Principles, Bean Lifecycles, AOP & Actuators.
+            117 pages covering Java History, JVM Architecture, Scanner & Input Handling, OOPs Concepts, Inheritance, Abstraction, Interfaces, Exception Handling, Strings, Enums & JVM Memory Model.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400 pt-2">
@@ -81,7 +80,7 @@ export default function NotesPage() {
             </div>
             <div className="flex items-center space-x-1.5 bg-slate-900/60 border border-slate-800 px-3 py-1.5 rounded-lg">
               <BookOpen className="w-4 h-4 text-blue-400" />
-              <span>PDF Format (85+ Pages)</span>
+              <span>PDF Format (117 Pages)</span>
             </div>
           </div>
         </section>
@@ -100,7 +99,7 @@ export default function NotesPage() {
                       : 'text-gray-400 hover:text-white'
                   }`}
                 >
-                  85-Page Syllabus Breakdown
+                  117-Page Syllabus Breakdown
                 </button>
                 <button
                   onClick={() => setActiveTab('sample')}
@@ -122,52 +121,66 @@ export default function NotesPage() {
 
             {activeTab === 'syllabus' ? (
               <div className="space-y-4">
-                <h3 className="font-semibold text-white text-lg">What&apos;s Covered in Spring Boot & JPA:</h3>
+                <h3 className="font-semibold text-white text-lg">What&apos;s Covered in Java Handwritten Notes (13 Modules):</h3>
                 <ul className="space-y-3 text-sm text-gray-300">
                   <li className="flex items-start space-x-3">
                     <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span><strong>Spring Boot Core:</strong> Spring vs Spring Boot, Auto-Configuration, Embedded Tomcat, JAR vs WAR.</span>
+                    <span><strong>1. History of Java & Features:</strong> James Gosling Green Team, Oak to Java, JDK releases & 10 core attributes.</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span><strong>IoC & Dependency Injection:</strong> BeanFactory vs ApplicationContext, Constructor Injection vs Setter/Field.</span>
+                    <span><strong>2. JVM, JRE, JDK & Flow:</strong> Bytecode (.class execution), Interpreter vs Compiler, Machine generations.</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span><strong>Annotations Matrix:</strong> @Controller vs @RestController, @Service, @Repository, @PathVariable, @RequestBody.</span>
+                    <span><strong>3. Input & Large Numbers:</strong> Scanner methods (`nextInt`, `nextLine`), BigInteger & BigDecimal arithmetic.</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span><strong>Spring Data JPA & Hibernate:</strong> Entity Lifecycle (Transient, Persistent, Detached, Removed), Mappings.</span>
+                    <span><strong>4–6. Control Flow & Constructors:</strong> If-Else, Switch, Loops, No-Arg, Parameterized & Default Constructors.</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span><strong>SOLID Principles & AOP:</strong> SRP, OCP, LSP, ISP, DIP in Java + Aspect, Advice (@Before, @Around), Proxies.</span>
+                    <span><strong>7–10. OOPs, Inheritance & Interfaces:</strong> `extends`, `super`, Overriding vs Overloading, Abstract classes & Java 8 default/static interface methods.</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>11. Exception Handling:</strong> `try-catch`, Multiple Catch, Nested Try, `throw` vs `throws`, Custom Exceptions.</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>12–13. Strings, Enums & JVM Memory Model:</strong> String/StringBuffer/StringBuilder, Enums, Metaspace, Heap, Stack, PC Register & Native Stack (JNI).</span>
                   </li>
                 </ul>
               </div>
             ) : (
               <div className="space-y-4 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-gray-300 relative">
-                <div className="text-emerald-400 font-semibold">// Spring Boot Controller & Constructor Injection</div>
+                <div className="text-emerald-400 font-semibold">// Custom Exception & Scanner Input Handling</div>
                 <pre className="text-gray-400 overflow-x-auto p-2 bg-slate-900 rounded">
-{`@RestController
-@RequestMapping("/api/users")
-public class UserApiController {
-    private final UserService userService;
-
-    // Constructor Injection (Best Practice)
-    public UserApiController(UserService userService) {
-        this.userService = userService;
+{`class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
     }
+}
 
-    @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
-        return userService.findById(id);
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        try {
+            System.out.print("Enter your age: ");
+            int age = input.nextInt();
+            if (age < 18) {
+                throw new InvalidAgeException("Age must be 18 or above.");
+            }
+            System.out.println("Age is valid!");
+        } catch (InvalidAgeException e) {
+            System.out.println("Validation error: " + e.getMessage());
+        }
     }
 }`}
                 </pre>
                 <div className="p-3 bg-emerald-950/40 border border-emerald-800/40 rounded text-emerald-300 font-sans">
-                  🔒 Full 85-Page Spring Boot PDF is locked until Razorpay payment completion.
+                  🔒 Full 117-Page Java Handwritten Notes PDF is locked until Razorpay payment completion.
                 </div>
               </div>
             )}
@@ -188,14 +201,14 @@ public class UserApiController {
               <span className="text-4xl font-black text-white">₹{priceINR}</span>
               <span className="text-sm text-gray-400 line-through">₹599</span>
               <span className="text-xs text-emerald-400 bg-emerald-950 border border-emerald-800 px-2 py-0.5 rounded font-semibold">
-                83% OFF
+                85% OFF
               </span>
             </div>
 
             <ul className="space-y-2.5 text-xs sm:text-sm text-gray-300">
               <li className="flex items-center space-x-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>85+ Page Complete PDF Guide</span>
+                <span>117-Page Complete Handwritten PDF Guide</span>
               </li>
               <li className="flex items-center space-x-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
@@ -207,14 +220,14 @@ public class UserApiController {
               </li>
               <li className="flex items-center space-x-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Printable PDF with Code Templates</span>
+                <span>Printable PDF with Code Templates & Diagrams</span>
               </li>
             </ul>
 
-            {/* Official Razorpay Payment Button pl_TfNHgCIyksi0PZ */}
+            {/* Official Razorpay Payment Button */}
             <div className="pt-2">
               <p className="text-xs text-center text-gray-400 mb-2 font-medium">Click below to pay with Razorpay:</p>
-              <RazorpayButton buttonId="pl_TfNHgCIyksi0PZ" />
+              <RazorpayButton priceINR={priceINR} notesTitle={notesTitle} />
             </div>
 
             <div className="text-center text-xs text-gray-400 space-y-1 pt-2">
@@ -231,10 +244,10 @@ public class UserApiController {
           <div className="text-center space-y-2">
             <h3 className="text-xl font-bold text-white flex items-center justify-center space-x-2">
               <Layers className="w-6 h-6 text-emerald-400" />
-              <span>Complete Module Structure (85 Pages)</span>
+              <span>Complete Module Breakdown (117 Pages)</span>
             </h3>
             <p className="text-sm text-gray-400 max-w-xl mx-auto">
-              Everything you need for backend developer interviews & enterprise Spring applications.
+              Everything you need for backend developer interviews & core Java mastery.
             </p>
           </div>
 
@@ -243,9 +256,9 @@ public class UserApiController {
               <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
                 <Cpu className="w-4 h-4" />
               </div>
-              <h4 className="font-semibold text-white text-sm">Spring Boot Core & DI</h4>
+              <h4 className="font-semibold text-white text-sm">Core Java & OOPs</h4>
               <p className="text-xs text-gray-400">
-                Auto-Configuration, BeanFactory vs ApplicationContext, Constructor Injection, @Primary vs @Qualifier.
+                Java history, JDK/JRE/JVM, data types, Scanner input, constructors, inheritance (`super`), & method overriding.
               </p>
             </div>
 
@@ -253,9 +266,9 @@ public class UserApiController {
               <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold">
                 <Database className="w-4 h-4" />
               </div>
-              <h4 className="font-semibold text-white text-sm">Spring Data JPA & ORM</h4>
+              <h4 className="font-semibold text-white text-sm">Interfaces & Exceptions</h4>
               <p className="text-xs text-gray-400">
-                Hibernate internals, Entity Lifecycle states (Transient, Managed, Detached, Removed), Repository CRUD.
+                Abstract classes, default/static interface methods, try-catch blocks, custom exceptions (`throws`/`throw`).
               </p>
             </div>
 
@@ -263,9 +276,9 @@ public class UserApiController {
               <div className="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold">
                 <Terminal className="w-4 h-4" />
               </div>
-              <h4 className="font-semibold text-white text-sm">AOP & SOLID Principles</h4>
+              <h4 className="font-semibold text-white text-sm">Strings & JVM Memory Model</h4>
               <p className="text-xs text-gray-400">
-                Aspects, Advice (@Before, @Around), Pointcuts, JDK Dynamic Proxy vs CGLIB, and SOLID patterns in Spring.
+                String/StringBuffer/StringBuilder, Enums, Metaspace, Heap, Stack, PC Register, and Native Stack (JNI).
               </p>
             </div>
           </div>

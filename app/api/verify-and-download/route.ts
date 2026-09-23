@@ -66,7 +66,7 @@ async function handleVerificationAndDownload(
     status: 200,
     headers: {
       'Content-Type': 'application/pdf',
-      'Content-Disposition': 'attachment; filename="spring-boot-jpa-notes.pdf"',
+      'Content-Disposition': 'attachment; filename="java-programming-notes.pdf"',
       'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
       'Pragma': 'no-cache',
     },

@@ -2,134 +2,99 @@ import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import fs from 'fs';
 import path from 'path';
 
-async function generateSpringBootNotesPDF() {
+async function generateJavaNotesPDF() {
   const pdfDoc = await PDFDocument.create();
   const titleFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
   const regularFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const codeFont = await pdfDoc.embedFont(StandardFonts.Courier);
 
-  // --- Page 1: Title & Core Concepts ---
+  // --- Page 1: Title, Index & Core History ---
   const page1 = pdfDoc.addPage([595.28, 841.89]);
   const { width, height } = page1.getSize();
 
-  // Banner
+  // Top Banner
   page1.drawRectangle({
     x: 0,
     y: height - 120,
     width: width,
     height: 120,
-    color: rgb(0.06, 0.45, 0.25), // Spring Green Theme
+    color: rgb(0.09, 0.35, 0.62), // Java Blue Theme
   });
 
-  page1.drawText('SPRING BOOT & JPA MASTER NOTES', {
+  page1.drawText('JAVA PROGRAMMING LANGUAGE', {
     x: 40,
-    y: height - 60,
-    size: 20,
+    y: height - 55,
+    size: 22,
     font: titleFont,
     color: rgb(1, 1, 1),
   });
 
-  page1.drawText('Comprehensive Placement & Enterprise Development Guide', {
+  page1.drawText('Handwritten Notes — Complete Masterclass Edition (117 Pages)', {
     x: 40,
-    y: height - 90,
+    y: height - 85,
     size: 12,
     font: regularFont,
-    color: rgb(0.85, 0.95, 0.88),
+    color: rgb(0.85, 0.92, 0.98),
   });
 
   let y = height - 150;
 
-  page1.drawText('1. What is Spring Boot?', {
+  // Table of Contents Header
+  page1.drawText('TABLE OF CONTENTS / INDEX (13 MODULES)', {
     x: 40,
     y: y,
-    size: 15,
+    size: 14,
     font: titleFont,
-    color: rgb(0.1, 0.2, 0.1),
+    color: rgb(0.1, 0.2, 0.4),
   });
-  y -= 25;
+  y -= 20;
 
-  const introText = [
-    'Spring Boot is an open-source Java-based framework built on top of Spring',
-    'that simplifies configuration, setup, and deployment using auto-configuration,',
-    'embedded Tomcat servers, and opinionated starter dependencies.',
+  const tocItems = [
+    '1. History of Java & Core Features (Pages 1 – 5)',
+    '2. JVM, JRE, JDK & Program Generations (Pages 6 – 9)',
+    '3. Input Handling: Scanner, BigInteger & BigDecimal (Pages 10 – 14)',
+    '4. Java Expressions, Data Types & Flow Control (Pages 15 – 18)',
+    '5. Control Flow Statements (If-Else, Switch, Loops) (Pages 19 – 23)',
+    '6. Classes, Objects & Constructors (Pages 24 – 32)',
+    '7. Object-Oriented Programming (OOPs) Concepts (Pages 33 – 42)',
+    '8. Inheritance, Super Keyword & Method Overriding (Pages 43 – 52)',
+    '9. Polymorphism, Abstraction & Abstract Classes (Pages 53 – 62)',
+    '10. Interfaces, Default/Static Methods & Packages (Pages 63 – 72)',
+    '11. Exception Handling (Try-Catch, Custom Exceptions) (Pages 73 – 85)',
+    '12. String Handling, StringBuilder & StringBuffer (Pages 86 – 100)',
+    '13. Enums, Static Keyword & JVM Memory Model (Pages 101 – 117)',
   ];
-  introText.forEach((line) => {
-    page1.drawText(line, { x: 40, y: y, size: 11, font: regularFont, color: rgb(0.2, 0.25, 0.3) });
-    y -= 16;
+
+  tocItems.forEach((item) => {
+    page1.drawText(item, { x: 50, y: y, size: 10, font: regularFont, color: rgb(0.15, 0.2, 0.3) });
+    y -= 17;
   });
 
   y -= 15;
-  page1.drawText('2. Key Module Topics Covered', {
-    x: 40,
-    y: y,
-    size: 15,
-    font: titleFont,
-    color: rgb(0.1, 0.2, 0.1),
-  });
-  y -= 25;
-
-  const topics = [
-    '• Module 1: Spring vs Spring Boot & Embedded Containers (JAR vs WAR)',
-    '• Module 2: IoC Containers & Dependency Injection (Constructor, Setter, Field)',
-    '• Module 3: Key Annotations (@RestController, @Service, @Repository, @Configuration)',
-    '• Module 4: Spring Data JPA, ORM Mappings & Entity Lifecycles',
-    '• Module 5: SOLID Design Principles applied in Spring Architecture',
-    '• Module 6: Spring Bean Lifecycle (@PostConstruct, BeanPostProcessor, @PreDestroy)',
-    '• Module 7: Aspect-Oriented Programming (AOP), Advice Types & Proxies (JDK vs CGLIB)',
-    '• Module 8: Spring Boot Actuator, Component Scanning & Profile Management',
-  ];
-
-  topics.forEach((topic) => {
-    page1.drawText(topic, { x: 50, y: y, size: 11, font: regularFont, color: rgb(0.15, 0.2, 0.25) });
-    y -= 22;
-  });
-
-  // Code snippet box on page 1
-  y -= 15;
-  page1.drawText('3. Sample Code: RestController & Constructor Injection', {
+  page1.drawText('1. History of Java & Core Features', {
     x: 40,
     y: y,
     size: 13,
     font: titleFont,
-    color: rgb(0.1, 0.2, 0.1),
+    color: rgb(0.1, 0.2, 0.4),
   });
-  y -= 25;
+  y -= 18;
 
-  const code1 = [
-    '@RestController',
-    '@RequestMapping("/api/users")',
-    'public class UserController {',
-    '    private final UserService userService;',
-    '',
-    '    public UserController(UserService userService) {',
-    '        this.userService = userService; // Recommended Constructor Injection',
-    '    }',
-    '',
-    '    @GetMapping("/{id}")',
-    '    public User getUser(@PathVariable Long id) {',
-    '        return userService.findById(id);',
-    '    }',
-    '}',
+  const historyText = [
+    '• Initiated in June 1991 by James Gosling, Mike Sheridan, and Patrick Naughton (Green Team).',
+    '• Initially named Greentalk (.gt) and Oak, later renamed Java in 1995.',
+    '• JDK 1.0 released on January 23, 1996.',
+    '• Core Attributes: Simple, Portable, Secure, High-Performance, Multithreaded, Platform-Independent,',
+    '  Robust, Object-Oriented, Architecture-Neutral, Dynamic.',
   ];
 
-  page1.drawRectangle({
-    x: 40,
-    y: y - 210,
-    width: width - 80,
-    height: 220,
-    color: rgb(0.95, 0.97, 0.95),
-    borderColor: rgb(0.7, 0.85, 0.7),
-    borderWidth: 1,
+  historyText.forEach((line) => {
+    page1.drawText(line, { x: 45, y: y, size: 9.5, font: regularFont, color: rgb(0.2, 0.25, 0.3) });
+    y -= 15;
   });
 
-  let codeY = y - 18;
-  code1.forEach((line) => {
-    page1.drawText(line, { x: 55, y: codeY, size: 9.5, font: codeFont, color: rgb(0.1, 0.3, 0.15) });
-    codeY -= 15;
-  });
-
-  // Footer
-  page1.drawText('Campus Notes • Spring Boot & JPA Complete Guide • Strictly Confidential', {
+  // Footer page 1
+  page1.drawText('Campus Notes • Java Programming Language Handwritten Notes • Strictly Confidential', {
     x: 40,
     y: 30,
     size: 9,
@@ -137,55 +102,121 @@ async function generateSpringBootNotesPDF() {
     color: rgb(0.5, 0.5, 0.5),
   });
 
-  // --- Page 2: Spring Data JPA & AOP Overview ---
+  // --- Page 2: Scanner, OOPs & Exception Handling Snippets ---
   const page2 = pdfDoc.addPage([595.28, 841.89]);
   let y2 = height - 50;
 
-  page2.drawText('4. Spring Data JPA & Entity Lifecycle States', {
+  page2.drawText('2. Input Handling with Scanner & BigInteger', {
     x: 40,
     y: y2,
-    size: 15,
+    size: 14,
     font: titleFont,
-    color: rgb(0.1, 0.2, 0.1),
+    color: rgb(0.1, 0.2, 0.4),
   });
-  y2 -= 25;
+  y2 -= 20;
 
-  const jpaStates = [
-    '1. TRANSIENT: Object exists only in JVM memory; Hibernate is unaware of it.',
-    '2. PERSISTENT: Object is managed by EntityManager / Session and tracked for changes.',
-    '3. DETACHED: Session closed; object exists in JVM but changes won\'t sync to DB.',
-    '4. REMOVED: Entity is marked for deletion from the database.',
+  const codeScanner = [
+    'import java.util.Scanner;',
+    'import java.math.BigInteger;',
+    '',
+    'public class InputDemo {',
+    '    public static void main(String[] args) {',
+    '        Scanner sc = new Scanner(System.in);',
+    '        System.out.print("Enter large number: ");',
+    '        BigInteger b1 = sc.nextBigInteger();',
+    '        BigInteger b2 = BigInteger.valueOf(100);',
+    '        System.out.println("Result: " + b1.add(b2));',
+    '    }',
+    '}',
   ];
 
-  jpaStates.forEach((state) => {
-    page2.drawText(state, { x: 50, y: y2, size: 10.5, font: regularFont, color: rgb(0.2, 0.25, 0.3) });
-    y2 -= 20;
+  page2.drawRectangle({
+    x: 40,
+    y: y2 - 170,
+    width: width - 80,
+    height: 175,
+    color: rgb(0.96, 0.98, 1.0),
+    borderColor: rgb(0.7, 0.8, 0.9),
+    borderWidth: 1,
   });
 
-  y2 -= 15;
-  page2.drawText('5. Aspect Oriented Programming (AOP) Cheat Sheet', {
+  let cY = y2 - 18;
+  codeScanner.forEach((line) => {
+    page2.drawText(line, { x: 50, y: cY, size: 9, font: codeFont, color: rgb(0.1, 0.2, 0.5) });
+    cY -= 14;
+  });
+
+  y2 -= 195;
+
+  page2.drawText('3. Object-Oriented Concepts, Inheritance & Exception Handling', {
     x: 40,
     y: y2,
-    size: 15,
+    size: 14,
     font: titleFont,
-    color: rgb(0.1, 0.2, 0.1),
+    color: rgb(0.1, 0.2, 0.4),
   });
-  y2 -= 25;
+  y2 -= 20;
 
-  const aopPoints = [
-    '• Aspect: A class containing cross-cutting concerns (Logging, Security, Transactions).',
-    '• Advice: Defines WHAT action to perform (@Before, @After, @AfterReturning, @Around).',
-    '• Pointcut: Defines WHERE the advice should be applied using expressions.',
-    '• Join Point: Execution point in application where advice can be plugged in.',
-    '• Proxies: JDK Dynamic Proxy (for Interfaces) vs CGLIB Proxy (for Subclasses).',
+  const codeOOP = [
+    '// Inheritance, super keyword, and Custom Exception',
+    'class InvalidAgeException extends Exception {',
+    '    public InvalidAgeException(String msg) { super(msg); }',
+    '}',
+    '',
+    'class Person {',
+    '    int age;',
+    '    Person(int age) { this.age = age; }',
+    '}',
+    '',
+    'class Student extends Person {',
+    '    Student(int age) throws InvalidAgeException {',
+    '        super(age); // Call superclass constructor',
+    '        if (age < 18) throw new InvalidAgeException("Underage student!");',
+    '    }',
+    '}',
   ];
 
-  aopPoints.forEach((pt) => {
-    page2.drawText(pt, { x: 50, y: y2, size: 10.5, font: regularFont, color: rgb(0.2, 0.25, 0.3) });
-    y2 -= 20;
+  page2.drawRectangle({
+    x: 40,
+    y: y2 - 230,
+    width: width - 80,
+    height: 235,
+    color: rgb(0.96, 0.98, 1.0),
+    borderColor: rgb(0.7, 0.8, 0.9),
+    borderWidth: 1,
   });
 
-  page2.drawText('Campus Notes • Spring Boot & JPA Complete Guide • Strictly Confidential', {
+  cY = y2 - 18;
+  codeOOP.forEach((line) => {
+    page2.drawText(line, { x: 50, y: cY, size: 9, font: codeFont, color: rgb(0.1, 0.2, 0.5) });
+    cY -= 14;
+  });
+
+  y2 -= 255;
+
+  page2.drawText('4. JVM Memory Model Areas', {
+    x: 40,
+    y: y2,
+    size: 14,
+    font: titleFont,
+    color: rgb(0.1, 0.2, 0.4),
+  });
+  y2 -= 20;
+
+  const jvmAreas = [
+    '• Metaspace: Stores class metadata, bytecodes, static variables.',
+    '• Heap: Stores all instantiated objects and instance variables.',
+    '• Stack: Holds stack frames, method calls, local variables & object references.',
+    '• PC Register: Holds the address of the currently executing JVM instruction per thread.',
+    '• Native Method Stack: Stores native (C/C++) method execution state via JNI.',
+  ];
+
+  jvmAreas.forEach((area) => {
+    page2.drawText(area, { x: 45, y: y2, size: 9.5, font: regularFont, color: rgb(0.2, 0.25, 0.3) });
+    y2 -= 16;
+  });
+
+  page2.drawText('Campus Notes • Java Programming Language Handwritten Notes • Strictly Confidential', {
     x: 40,
     y: 30,
     size: 9,
@@ -199,7 +230,7 @@ async function generateSpringBootNotesPDF() {
     fs.mkdirSync(dir, { recursive: true });
   }
   fs.writeFileSync(path.join(dir, 'programming-notes.pdf'), pdfBytes);
-  console.log('Successfully generated Spring Boot & JPA private_assets/programming-notes.pdf!');
+  console.log('Successfully generated Java Notes private_assets/programming-notes.pdf!');
 }
 
-generateSpringBootNotesPDF().catch(console.error);
+generateJavaNotesPDF().catch(console.error);
