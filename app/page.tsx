@@ -14,6 +14,8 @@ import {
   Cpu,
   Database,
   Terminal,
+  Clock,
+  Flame,
 } from 'lucide-react';
 import RazorpayButton from './components/RazorpayButton';
 
@@ -25,6 +27,18 @@ export default function NotesPage() {
 
   return (
     <div className="min-h-screen bg-[#0b0f17] text-gray-100 flex flex-col justify-between">
+      {/* 24-Hour Flash Sale Announcement Bar */}
+      <div className="bg-gradient-to-r from-amber-950/90 via-rose-950/90 to-amber-950/90 border-b border-rose-500/40 text-amber-200 text-xs sm:text-sm py-2 px-4 text-center font-semibold flex items-center justify-center space-x-2 shadow-lg">
+        <span className="flex h-2.5 w-2.5 relative">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500"></span>
+        </span>
+        <Flame className="w-4 h-4 text-amber-400 animate-bounce" />
+        <span>
+          <strong>24-HOUR FLASH SALE:</strong> Get Java Handwritten Notes for <strong>₹89</strong> (85% OFF). Offer valid for <strong>24 Hours Only!</strong>
+        </span>
+      </div>
+
       {/* Navbar */}
       <header className="border-b border-gray-800/80 bg-[#0d131f]/80 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
@@ -37,15 +51,15 @@ export default function NotesPage() {
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            <div className="hidden sm:flex items-center text-xs font-medium text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 px-3 py-1 rounded-full space-x-1.5">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Razorpay Verified Payment</span>
+            <div className="hidden sm:flex items-center text-xs font-medium text-amber-400 bg-amber-950/60 border border-amber-800/50 px-3 py-1 rounded-full space-x-1.5">
+              <Clock className="w-3.5 h-3.5" />
+              <span>Offer Ends in 24 Hours</span>
             </div>
             <a
               href="#payment-section"
-              className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm px-4 py-2 rounded-lg transition-all shadow-md shadow-emerald-900/20"
+              className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm px-4 py-2 rounded-lg transition-all shadow-md shadow-emerald-900/20"
             >
-              Buy Now — ₹{priceINR}
+              Get Notes — ₹{priceINR}
             </a>
           </div>
         </div>
@@ -55,9 +69,9 @@ export default function NotesPage() {
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         {/* Hero Section */}
         <section className="text-center space-y-6 pt-4">
-          <div className="inline-flex items-center space-x-2 bg-slate-900/80 border border-slate-700/60 px-4 py-1.5 rounded-full text-xs text-gray-300">
-            <Sparkles className="w-4 h-4 text-emerald-400 animate-pulse" />
-            <span>2026 Edition • Complete Java Core, OOPs & JVM Memory Placement Notes</span>
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-950/80 via-amber-950/80 to-rose-950/80 border border-rose-500/40 px-4 py-1.5 rounded-full text-xs text-rose-200 font-semibold shadow-inner">
+            <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
+            <span>⏳ SPECIAL OFFER: ₹89 (85% OFF) — Valid for 24 Hours Only!</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
@@ -188,8 +202,9 @@ public class Main {
 
           {/* Right Pricing Card (The Single Note Spot) */}
           <div className="lg:col-span-5 bg-gradient-to-b from-[#111c2e] to-[#0d1522] border-2 border-emerald-500/40 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl glow-emerald relative">
-            <div className="absolute -top-3.5 right-6 bg-emerald-500 text-slate-950 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
-              Single Note Spot
+            <div className="absolute -top-3.5 right-6 bg-rose-500 text-slate-950 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider animate-pulse flex items-center space-x-1">
+              <Flame className="w-3.5 h-3.5" />
+              <span>24 Hours Only</span>
             </div>
 
             <div>
@@ -197,10 +212,21 @@ public class Main {
               <h2 className="text-2xl font-bold text-white mt-1">{notesTitle}</h2>
             </div>
 
+            {/* 24 Hour Countdown Banner Box */}
+            <div className="bg-rose-950/40 border border-rose-500/40 rounded-xl p-3 text-center space-y-1">
+              <div className="flex items-center justify-center space-x-1.5 text-rose-400 font-bold text-xs uppercase tracking-wider">
+                <Clock className="w-4 h-4 animate-spin" />
+                <span>24-Hour Flash Discount Active</span>
+              </div>
+              <p className="text-[11px] text-gray-300">
+                Offer price <strong className="text-emerald-400">₹89</strong> is available for <strong>24 Hours Only</strong>. Regular price: <span className="line-through text-gray-400">₹599</span>.
+              </p>
+            </div>
+
             <div className="flex items-baseline space-x-2 border-y border-slate-800 py-4">
               <span className="text-4xl font-black text-white">₹{priceINR}</span>
               <span className="text-sm text-gray-400 line-through">₹599</span>
-              <span className="text-xs text-emerald-400 bg-emerald-950 border border-emerald-800 px-2 py-0.5 rounded font-semibold">
+              <span className="text-xs text-emerald-400 bg-emerald-950 border border-emerald-800 px-2.5 py-1 rounded font-extrabold">
                 85% OFF
               </span>
             </div>
