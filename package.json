@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/create-pdf.mjs && next build",
+    "build": "next build",
     "start": "next start"
   },
   "keywords": [],
