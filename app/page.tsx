@@ -23,7 +23,7 @@ export default function NotesPage() {
   const [activeTab, setActiveTab] = useState<'syllabus' | 'sample'>('syllabus');
 
   const notesTitle = process.env.NEXT_PUBLIC_NOTES_TITLE || 'Java Programming Language — Complete Handwritten Notes';
-  const priceINR = process.env.NEXT_PUBLIC_NOTES_PRICE_INR || '1';
+  const priceINR = process.env.NEXT_PUBLIC_NOTES_PRICE_INR || '89';
 
   return (
     <div className="min-h-screen bg-[#0b0f17] text-gray-100 flex flex-col justify-between">
@@ -35,7 +35,7 @@ export default function NotesPage() {
         </span>
         <Flame className="w-4 h-4 text-amber-400 animate-bounce" />
         <span>
-          <strong>24-HOUR FLASH SALE:</strong> Get Java Handwritten Notes for <strong>₹1</strong> (99% OFF). Offer valid for <strong>24 Hours Only!</strong>
+          <strong>24-HOUR FLASH SALE:</strong> Get Java Handwritten Notes for <strong>₹89</strong> (85% OFF). Offer valid for <strong>24 Hours Only!</strong>
         </span>
       </div>
 
@@ -71,7 +71,7 @@ export default function NotesPage() {
         <section className="text-center space-y-6 pt-4">
           <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-950/80 via-amber-950/80 to-rose-950/80 border border-rose-500/40 px-4 py-1.5 rounded-full text-xs text-rose-200 font-semibold shadow-inner">
             <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
-            <span>⏳ SPECIAL OFFER: ₹1 (99% OFF) — Valid for 24 Hours Only!</span>
+            <span>⏳ SPECIAL OFFER: ₹89 (85% OFF) — Valid for 24 Hours Only!</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
@@ -219,7 +219,7 @@ public class Main {
                 <span>24-Hour Flash Discount Active</span>
               </div>
               <p className="text-[11px] text-gray-300">
-                Offer price <strong className="text-emerald-400">₹1</strong> is available for <strong>24 Hours Only</strong>. Regular price: <span className="line-through text-gray-400">₹599</span>.
+                Offer price <strong className="text-emerald-400">₹89</strong> is available for <strong>24 Hours Only</strong>. Regular price: <span className="line-through text-gray-400">₹599</span>.
               </p>
             </div>
 
@@ -227,7 +227,7 @@ public class Main {
               <span className="text-4xl font-black text-white">₹{priceINR}</span>
               <span className="text-sm text-gray-400 line-through">₹599</span>
               <span className="text-xs text-emerald-400 bg-emerald-950 border border-emerald-800 px-2.5 py-1 rounded font-extrabold">
-                99% OFF
+                85% OFF
               </span>
             </div>
 

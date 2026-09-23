@@ -5,7 +5,7 @@ export async function POST(req: Request) {
   try {
     const key_id = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_placeholder_key_id';
     const key_secret = process.env.RAZORPAY_KEY_SECRET || 'placeholder_secret_key';
-    const priceINR = parseInt(process.env.NEXT_PUBLIC_NOTES_PRICE_INR || '1', 10);
+    const priceINR = parseInt(process.env.NEXT_PUBLIC_NOTES_PRICE_INR || '89', 10);
 
     // If actual Razorpay credentials are not yet set up, return a simulated order for testing UI flow
     if (key_id.includes('placeholder') || key_secret.includes('placeholder')) {
