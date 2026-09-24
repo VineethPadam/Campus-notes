@@ -3,9 +3,18 @@ import Razorpay from 'razorpay';
 
 export async function POST(req: Request) {
   try {
+    const body = await req.json().catch(() => ({}));
+    const noteId = body.noteId === 'spring-boot' ? 'spring-boot' : 'java';
+
     const key_id = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_placeholder_key_id';
     const key_secret = process.env.RAZORPAY_KEY_SECRET || 'placeholder_secret_key';
-    const priceINR = parseInt(process.env.NEXT_PUBLIC_NOTES_PRICE_INR || '89', 10);
+
+    const priceMap: Record<string, number> = {
+      'java': 49,
+      'spring-boot': 69,
+    };
+
+    const priceINR = priceMap[noteId] || 49;
 
     // If actual Razorpay credentials are not yet set up, return a simulated order for testing UI flow
     if (key_id.includes('placeholder') || key_secret.includes('placeholder')) {
@@ -16,6 +25,7 @@ export async function POST(req: Request) {
         amount: priceINR * 100,
         currency: 'INR',
         key: key_id,
+        noteId,
         isMock: true,
       });
     }
@@ -28,9 +38,9 @@ export async function POST(req: Request) {
     const options = {
       amount: priceINR * 100, // Amount in paise
       currency: 'INR',
-      receipt: `receipt_note_${Date.now()}`,
+      receipt: `receipt_${noteId}_${Date.now()}`,
       notes: {
-        product: 'Programming Notes PDF',
+        product: noteId === 'spring-boot' ? 'Spring Boot & JPA Handwritten Notes' : 'Java Programming Handwritten Notes',
       },
     };
 
@@ -42,6 +52,7 @@ export async function POST(req: Request) {
       amount: order.amount,
       currency: order.currency,
       key: key_id,
+      noteId,
       isMock: false,
     });
   } catch (error: any) {

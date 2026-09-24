@@ -7,7 +7,8 @@ async function handleVerificationAndDownload(
   razorpay_payment_id: string,
   razorpay_order_id: string,
   razorpay_signature: string,
-  isMock: boolean = false
+  isMock: boolean = false,
+  noteId: string = 'java'
 ) {
   // Check if payment ID exists
   if (!razorpay_payment_id && !isMock) {
@@ -50,12 +51,24 @@ async function handleVerificationAndDownload(
     }
   }
 
-  // Payment Verified! Fetch private PDF from server folder
-  const pdfPath = path.join(process.cwd(), 'private_assets', 'programming-notes.pdf');
+  // Payment Verified! Fetch private PDF from server folder based on noteId
+  const fileNameMap: Record<string, { serverFile: string; downloadName: string }> = {
+    'spring-boot': {
+      serverFile: 'spring-boot-notes.pdf',
+      downloadName: 'spring-boot-jpa-notes.pdf',
+    },
+    'java': {
+      serverFile: 'programming-notes.pdf',
+      downloadName: 'java-programming-notes.pdf',
+    },
+  };
+
+  const fileConfig = fileNameMap[noteId] || fileNameMap['java'];
+  const pdfPath = path.join(process.cwd(), 'private_assets', fileConfig.serverFile);
 
   if (!fs.existsSync(pdfPath)) {
     return NextResponse.json(
-      { success: false, error: 'Notes asset file not found on server' },
+      { success: false, error: `Notes asset file (${fileConfig.serverFile}) not found on server` },
       { status: 404 }
     );
   }
@@ -66,7 +79,7 @@ async function handleVerificationAndDownload(
     status: 200,
     headers: {
       'Content-Type': 'application/pdf',
-      'Content-Disposition': 'attachment; filename="java-programming-notes.pdf"',
+      'Content-Disposition': `attachment; filename="${fileConfig.downloadName}"`,
       'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
       'Pragma': 'no-cache',
     },
@@ -80,6 +93,7 @@ export async function POST(req: Request) {
     let razorpay_order_id = '';
     let razorpay_signature = '';
     let isMock = false;
+    let noteId = 'java';
 
     const contentType = req.headers.get('content-type') || '';
 
@@ -88,15 +102,17 @@ export async function POST(req: Request) {
       razorpay_payment_id = formData.get('razorpay_payment_id')?.toString() || '';
       razorpay_order_id = formData.get('razorpay_order_id')?.toString() || '';
       razorpay_signature = formData.get('razorpay_signature')?.toString() || '';
+      noteId = formData.get('noteId')?.toString() || 'java';
     } else {
       const body = await req.json().catch(() => ({}));
       razorpay_payment_id = body.razorpay_payment_id || '';
       razorpay_order_id = body.razorpay_order_id || '';
       razorpay_signature = body.razorpay_signature || '';
       isMock = body.isMock || false;
+      noteId = body.noteId || 'java';
     }
 
-    return await handleVerificationAndDownload(razorpay_payment_id, razorpay_order_id, razorpay_signature, isMock);
+    return await handleVerificationAndDownload(razorpay_payment_id, razorpay_order_id, razorpay_signature, isMock, noteId);
   } catch (error: any) {
     console.error('Error in verify-and-download API:', error);
     return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 });
@@ -109,6 +125,7 @@ export async function GET(req: Request) {
   const razorpay_payment_id = searchParams.get('razorpay_payment_id') || '';
   const razorpay_order_id = searchParams.get('razorpay_order_id') || '';
   const razorpay_signature = searchParams.get('razorpay_signature') || '';
+  const noteId = searchParams.get('noteId') || 'java';
 
-  return await handleVerificationAndDownload(razorpay_payment_id, razorpay_order_id, razorpay_signature, false);
+  return await handleVerificationAndDownload(razorpay_payment_id, razorpay_order_id, razorpay_signature, false, noteId);
 }

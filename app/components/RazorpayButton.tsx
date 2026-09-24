@@ -11,13 +11,17 @@ declare global {
 }
 
 interface RazorpayButtonProps {
+  noteId?: string;
   priceINR?: string;
   notesTitle?: string;
+  buttonLabel?: string;
 }
 
 export default function RazorpayButton({
-  priceINR = '89',
+  noteId = 'java',
+  priceINR = '49',
   notesTitle = 'Java Programming Language — Complete Handwritten Notes',
+  buttonLabel,
 }: RazorpayButtonProps) {
   const [loading, setLoading] = useState(false);
   const [statusText, setStatusText] = useState('');
@@ -42,13 +46,14 @@ export default function RazorpayButton({
     razorpay_order_id: string;
     razorpay_signature: string;
     isMock?: boolean;
+    noteId?: string;
   }) => {
     try {
-      setStatusText('Downloading Java Notes PDF...');
+      setStatusText(`Downloading ${noteId === 'spring-boot' ? 'Spring Boot' : 'Java'} Notes PDF...`);
       const response = await fetch('/api/verify-and-download', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(paymentDetails),
+        body: JSON.stringify({ ...paymentDetails, noteId }),
       });
 
       if (!response.ok) {
@@ -62,7 +67,7 @@ export default function RazorpayButton({
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'java-programming-notes.pdf';
+      a.download = noteId === 'spring-boot' ? 'spring-boot-jpa-notes.pdf' : 'java-programming-notes.pdf';
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
@@ -97,6 +102,7 @@ export default function RazorpayButton({
       const res = await fetch('/api/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ noteId }),
       });
 
       const orderData = await res.json();
@@ -116,6 +122,7 @@ export default function RazorpayButton({
           razorpay_order_id: orderData.orderId,
           razorpay_signature: 'mock_signature',
           isMock: true,
+          noteId,
         });
         setLoading(false);
         setStatusText('');
@@ -136,6 +143,7 @@ export default function RazorpayButton({
             razorpay_order_id: response.razorpay_order_id,
             razorpay_signature: response.razorpay_signature,
             isMock: false,
+            noteId,
           });
           setLoading(false);
           setStatusText('');
@@ -161,6 +169,8 @@ export default function RazorpayButton({
     }
   };
 
+  const defaultButtonLabel = `Pay ₹${priceINR} & Download ${noteId === 'spring-boot' ? 'Spring Boot' : 'Java'} Notes`;
+
   return (
     <div className="w-full flex flex-col items-center justify-center space-y-3">
       <button
@@ -176,7 +186,7 @@ export default function RazorpayButton({
         ) : (
           <>
             <Sparkles className="w-5 h-5 text-slate-950 group-hover:scale-110 transition-transform" />
-            <span>Pay ₹{priceINR} & Download Java Notes</span>
+            <span>{buttonLabel || defaultButtonLabel}</span>
           </>
         )}
       </button>
