@@ -390,7 +390,7 @@ public class Main {
                 </div>
                 <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
                   <p className="font-bold text-white">4. Spring Data JPA & ORM</p>
-                  <p className="text-xs text-gray-400">JDBC -> Hibernate -> JPA. `@Entity`, `@Id`, `@Column`, Entity Lifecycle (Transient, Persistent, Detached, Removed).</p>
+                  <p className="text-xs text-gray-400">JDBC &rarr; Hibernate &rarr; JPA. `@Entity`, `@Id`, `@Column`, Entity Lifecycle (Transient, Persistent, Detached, Removed).</p>
                 </div>
                 <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
                   <p className="font-bold text-white">5. SOLID Principles & Profiling</p>
