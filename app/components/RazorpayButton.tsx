@@ -66,8 +66,17 @@ export default function RazorpayButton({
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
+
+      const fileNameMap: Record<string, string> = {
+        'spring-boot': 'spring-boot-jpa-notes.pdf',
+        'java': 'java-programming-notes.pdf',
+        'c-100-coding': 'c-100-master-solved-programs.pdf',
+        'c-textbook': 'c-programming-master-textbook.pdf',
+        'c-combo': 'c-programming-complete-combo.pdf',
+      };
+
       a.href = url;
-      a.download = noteId === 'spring-boot' ? 'spring-boot-jpa-notes.pdf' : 'java-programming-notes.pdf';
+      a.download = fileNameMap[noteId || 'java'] || 'programming-notes.pdf';
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);

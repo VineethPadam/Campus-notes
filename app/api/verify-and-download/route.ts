@@ -61,6 +61,18 @@ async function handleVerificationAndDownload(
       serverFile: 'programming-notes.pdf',
       downloadName: 'java-programming-notes.pdf',
     },
+    'c-100-coding': {
+      serverFile: 'c-100-coding-notes.pdf',
+      downloadName: 'c-100-master-solved-programs.pdf',
+    },
+    'c-textbook': {
+      serverFile: 'c-textbook-notes.pdf',
+      downloadName: 'c-programming-master-textbook.pdf',
+    },
+    'c-combo': {
+      serverFile: 'c-combo-notes.pdf',
+      downloadName: 'c-programming-complete-combo.pdf',
+    },
   };
 
   const fileConfig = fileNameMap[noteId] || fileNameMap['java'];
