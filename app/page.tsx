@@ -19,6 +19,8 @@ import {
   FileCode,
   BookMarked,
   Package,
+  Globe,
+  Hourglass,
 } from 'lucide-react';
 import RazorpayButton from './components/RazorpayButton';
 
@@ -68,6 +70,46 @@ export default function NotesPage() {
         </div>
       </header>
 
+      {/* Top Category Navigation Filter Bar */}
+      <nav className="bg-[#0d1322]/90 border-b border-slate-800/80 backdrop-blur-md sticky top-16 z-30 py-2.5 px-4 shadow-md">
+        <div className="max-w-6xl mx-auto flex items-center justify-center flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm font-bold">
+          <a
+            href="#c-section"
+            className="px-3.5 py-1.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 transition-all flex items-center space-x-1.5"
+          >
+            <FileCode className="w-4 h-4 text-amber-400" />
+            <span>C Programming Notes</span>
+          </a>
+
+          <a
+            href="#java-section"
+            className="px-3.5 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 transition-all flex items-center space-x-1.5"
+          >
+            <Cpu className="w-4 h-4 text-emerald-400" />
+            <span>Java Notes</span>
+          </a>
+
+          <a
+            href="#spring-boot-section"
+            className="px-3.5 py-1.5 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/30 hover:bg-blue-500/20 transition-all flex items-center space-x-1.5"
+          >
+            <Database className="w-4 h-4 text-blue-400" />
+            <span>Spring Boot Notes</span>
+          </a>
+
+          <a
+            href="#web-dev-section"
+            className="px-3.5 py-1.5 rounded-xl bg-purple-500/10 text-purple-300 border border-purple-500/30 hover:bg-purple-500/20 transition-all flex items-center space-x-1.5 relative group"
+          >
+            <Globe className="w-4 h-4 text-purple-400" />
+            <span>Web Development</span>
+            <span className="bg-rose-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider animate-pulse ml-1">
+              Releasing Soon
+            </span>
+          </a>
+        </div>
+      </nav>
+
       {/* Main Container */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         {/* Hero Section */}
@@ -103,10 +145,10 @@ export default function NotesPage() {
         </section>
 
         {/* SECTION 1: C PROGRAMMING & COMBO OFFER SECTION */}
-        <section id="c-section" className="space-y-6 pt-4">
+        <section id="c-section" className="space-y-6 scroll-mt-28">
           <div className="text-center space-y-2">
             <span className="text-xs text-amber-400 font-bold uppercase tracking-widest bg-amber-950/60 border border-amber-800/50 px-3 py-1 rounded-full inline-block">
-              New Release • C Programming Series
+              C Programming Series
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-white">C Programming Notes & Complete Combo</h2>
             <p className="text-sm text-gray-400 max-w-2xl mx-auto">
@@ -311,19 +353,19 @@ export default function NotesPage() {
           </div>
         </section>
 
-        {/* SECTION 2: JAVA & SPRING BOOT SECTION */}
-        <section className="space-y-6">
+        {/* SECTION 2: JAVA NOTES SECTION */}
+        <section id="java-section" className="space-y-6 scroll-mt-28">
           <div className="text-center space-y-2">
             <span className="text-xs text-emerald-400 font-bold uppercase tracking-widest bg-emerald-950/60 border border-emerald-800/50 px-3 py-1 rounded-full inline-block">
-              Java & Enterprise Backend Series
+              Core Java Series
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Java & Spring Boot Notes</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">Java Programming Notes</h2>
             <p className="text-sm text-gray-400">
-              Actual Price: <span className="line-through text-gray-500 font-bold">₹150</span> each • Special Offer Active
+              Actual Price: <span className="line-through text-gray-500 font-bold">₹150</span> • Special Offer Active
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="max-w-2xl mx-auto">
             {/* Java Notes Card */}
             <div className="bg-gradient-to-b from-[#111c2e] to-[#0d1522] border-2 border-emerald-500/40 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl glow-emerald relative flex flex-col justify-between">
               <div className="space-y-4">
@@ -395,7 +437,22 @@ export default function NotesPage() {
                 />
               </div>
             </div>
+          </div>
+        </section>
 
+        {/* SECTION 3: SPRING BOOT NOTES SECTION */}
+        <section id="spring-boot-section" className="space-y-6 scroll-mt-28">
+          <div className="text-center space-y-2">
+            <span className="text-xs text-blue-400 font-bold uppercase tracking-widest bg-blue-950/60 border border-blue-800/50 px-3 py-1 rounded-full inline-block">
+              Enterprise Framework Series
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">Spring Boot & JPA Notes</h2>
+            <p className="text-sm text-gray-400">
+              Actual Price: <span className="line-through text-gray-500 font-bold">₹150</span> • Special Offer Active
+            </p>
+          </div>
+
+          <div className="max-w-2xl mx-auto">
             {/* Spring Boot Notes Card */}
             <div className="bg-gradient-to-b from-[#111c2e] to-[#0d1522] border-2 border-blue-500/40 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl glow-blue relative flex flex-col justify-between">
               <div className="space-y-4">
@@ -470,8 +527,51 @@ export default function NotesPage() {
           </div>
         </section>
 
+        {/* SECTION 4: WEB DEVELOPMENT (RELEASING SOON) SECTION */}
+        <section id="web-dev-section" className="space-y-6 scroll-mt-28">
+          <div className="text-center space-y-2">
+            <span className="text-xs text-purple-400 font-bold uppercase tracking-widest bg-purple-950/60 border border-purple-800/50 px-3 py-1 rounded-full inline-block">
+              Upcoming Course Notes
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">Web Development Notes</h2>
+            <p className="text-sm text-gray-400">HTML5, CSS3, JavaScript ES6+, React.js, Node.js & Full-Stack Architecture</p>
+          </div>
+
+          <div className="max-w-3xl mx-auto bg-gradient-to-r from-purple-950/40 via-slate-900/90 to-purple-950/40 border-2 border-purple-500/40 rounded-2xl p-8 sm:p-10 text-center space-y-6 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-4 right-4 bg-rose-500/20 text-rose-300 border border-rose-500/40 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider animate-pulse flex items-center space-x-1">
+              <Hourglass className="w-3.5 h-3.5 animate-spin" />
+              <span>RELEASING SOON</span>
+            </div>
+
+            <div className="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mx-auto shadow-inner">
+              <Globe className="w-8 h-8" />
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="text-2xl font-bold text-white">Full-Stack Web Development Master Class Notes</h3>
+              <p className="text-sm text-gray-300 max-w-xl mx-auto leading-relaxed">
+                Comprehensive handwritten notes covering HTML5 Semantic Layouts, CSS3 Flexbox/Grid, JavaScript Async/Await, DOM Manipulation, React.js Hooks, and Express/Node.js REST APIs are currently in preparation!
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-purple-300 font-semibold pt-2">
+              <span className="bg-slate-950/80 border border-purple-800/50 px-3 py-1.5 rounded-lg">HTML5 & CSS3</span>
+              <span className="bg-slate-950/80 border border-purple-800/50 px-3 py-1.5 rounded-lg">Modern JavaScript ES6+</span>
+              <span className="bg-slate-950/80 border border-purple-800/50 px-3 py-1.5 rounded-lg">React.js & Next.js</span>
+              <span className="bg-slate-950/80 border border-purple-800/50 px-3 py-1.5 rounded-lg">Node.js & MongoDB</span>
+            </div>
+
+            <div className="pt-2">
+              <div className="inline-flex items-center space-x-2 text-xs font-extrabold text-amber-300 bg-amber-950/60 border border-amber-800/50 px-4 py-2 rounded-xl">
+                <Sparkles className="w-4 h-4 text-amber-400" />
+                <span>Status: In Final Editing & Verification Phase • Stay Tuned!</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Interactive Syllabus & Code Preview Box */}
-        <section id="preview-section" className="bg-[#0f172a]/90 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+        <section id="preview-section" className="bg-[#0f172a]/90 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl scroll-mt-28">
           <div className="flex flex-wrap items-center justify-between border-b border-slate-800 pb-4 gap-4">
             <div>
               <h3 className="text-xl font-bold text-white flex items-center space-x-2">
