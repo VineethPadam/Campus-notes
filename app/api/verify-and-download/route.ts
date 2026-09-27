@@ -73,6 +73,10 @@ async function handleVerificationAndDownload(
       serverFile: 'c-combo-notes.pdf',
       downloadName: 'c-programming-complete-combo.pdf',
     },
+    'mysql': {
+      serverFile: 'mysql-notes.pdf',
+      downloadName: 'mysql-8-complete-master-textbook.pdf',
+    },
   };
 
   const fileConfig = fileNameMap[noteId] || fileNameMap['java'];

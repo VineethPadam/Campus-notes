@@ -21,12 +21,13 @@ import {
   Package,
   Globe,
   Hourglass,
+  Table,
 } from 'lucide-react';
 import RazorpayButton from './components/RazorpayButton';
 
 export default function NotesPage() {
   const [activePreviewNote, setActivePreviewNote] = useState<
-    'java' | 'spring-boot' | 'c-100-coding' | 'c-textbook'
+    'java' | 'spring-boot' | 'c-100-coding' | 'c-textbook' | 'mysql'
   >('java');
   const [previewTab, setPreviewTab] = useState<'syllabus' | 'sample'>('syllabus');
 
@@ -40,7 +41,7 @@ export default function NotesPage() {
         </span>
         <Flame className="w-4 h-4 text-amber-400 animate-bounce" />
         <span>
-          <strong>FLASH SALE:</strong> Java Notes <strong className="text-emerald-300">₹49</strong> | Spring Boot <strong className="text-emerald-300">₹69</strong> | C 100 Solved <strong className="text-emerald-300">₹39</strong> | C Textbook <strong className="text-emerald-300">₹39</strong> | <strong>C Combo ₹59!</strong>
+          <strong>FLASH SALE:</strong> MySQL Notes <strong className="text-cyan-300">₹49</strong> | Java <strong className="text-emerald-300">₹49</strong> | Spring Boot <strong className="text-blue-300">₹69</strong> | C 100 Solved <strong className="text-amber-300">₹39</strong> | C Textbook <strong className="text-amber-300">₹39</strong> | <strong>C Combo ₹59!</strong>
         </span>
       </div>
 
@@ -61,7 +62,7 @@ export default function NotesPage() {
               <span>Special Offer Active</span>
             </div>
             <a
-              href="#c-section"
+              href="#mysql-section"
               className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm px-4 py-2 rounded-lg transition-all shadow-md shadow-emerald-900/20"
             >
               Get Notes — From ₹39
@@ -73,6 +74,14 @@ export default function NotesPage() {
       {/* Top Category Navigation Filter Bar */}
       <nav className="bg-[#0d1322]/90 border-b border-slate-800/80 backdrop-blur-md sticky top-16 z-30 py-2.5 px-4 shadow-md">
         <div className="max-w-6xl mx-auto flex items-center justify-center flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm font-bold">
+          <a
+            href="#mysql-section"
+            className="px-3.5 py-1.5 rounded-xl bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/20 transition-all flex items-center space-x-1.5"
+          >
+            <Table className="w-4 h-4 text-cyan-400" />
+            <span>MySQL 8.0 Notes (₹49)</span>
+          </a>
+
           <a
             href="#c-section"
             className="px-3.5 py-1.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 transition-all flex items-center space-x-1.5"
@@ -116,16 +125,16 @@ export default function NotesPage() {
         <section className="text-center space-y-6 pt-4">
           <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-950/80 via-amber-950/80 to-rose-950/80 border border-rose-500/40 px-4 py-1.5 rounded-full text-xs text-rose-200 font-semibold shadow-inner">
             <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
-            <span>⏳ EXCLUSIVE DISCOUNTS: Individual from ₹39 • C Combo ₹59!</span>
+            <span>⏳ EXCLUSIVE DISCOUNTS: MySQL ₹49 • Java ₹49 • C Combo ₹59!</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
-            Master Programming & Frameworks with <br className="hidden sm:block" />
-            <span className="gradient-text">Handwritten Notes & Solved Programs</span>
+            Master Programming, Databases & Frameworks with <br className="hidden sm:block" />
+            <span className="gradient-text">Complete Master Notes & Textbooks</span>
           </h1>
 
           <p className="text-base sm:text-lg text-gray-400 max-w-3xl mx-auto">
-            High-quality PDF study guides for C, Core Java & Spring Boot. Detailed explanations, 100 master solved C programs, verified GCC console outputs, and exam-ready textbook notes.
+            High-quality PDF study guides for MySQL 8.0, C Programming, Core Java & Spring Boot. Executed queries, output tables, pro tips, and exam-ready master textbook notes.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400 pt-2">
@@ -135,7 +144,7 @@ export default function NotesPage() {
             </div>
             <div className="flex items-center space-x-1.5 bg-slate-900/60 border border-slate-800 px-3 py-1.5 rounded-lg">
               <Zap className="w-4 h-4 text-amber-400" />
-              <span>Instant Serverless Download</span>
+              <span>Instant Serverless PDF Download</span>
             </div>
             <div className="flex items-center space-x-1.5 bg-slate-900/60 border border-slate-800 px-3 py-1.5 rounded-lg">
               <BookOpen className="w-4 h-4 text-blue-400" />
@@ -144,7 +153,101 @@ export default function NotesPage() {
           </div>
         </section>
 
-        {/* SECTION 1: C PROGRAMMING & COMBO OFFER SECTION */}
+        {/* SECTION 1: MYSQL 8.0 & SQL SECTION */}
+        <section id="mysql-section" className="space-y-6 scroll-mt-28">
+          <div className="text-center space-y-2">
+            <span className="text-xs text-cyan-400 font-bold uppercase tracking-widest bg-cyan-950/60 border border-cyan-800/50 px-3 py-1 rounded-full inline-block">
+              Database Engineering Series
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">MySQL 8.0 & SQL Master Textbook</h2>
+            <p className="text-sm text-gray-400 max-w-2xl mx-auto">
+              Complete <strong className="text-cyan-300">208 A4 Pages • 202 Subtopics Edition</strong> covering DDL, DML, Joins, String/Numeric/Date Functions, Views & Prepared Statements.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-gradient-to-b from-[#0f1d2e] to-[#0a1523] border-2 border-cyan-500/40 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl glow-blue relative flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950/80 border border-cyan-800 px-2.5 py-1 rounded flex items-center space-x-1">
+                    <Table className="w-3.5 h-3.5 mr-1" />
+                    208 A4 Pages • 202 Subtopics
+                  </span>
+                  <span className="bg-rose-500/20 text-rose-300 border border-rose-500/40 text-xs font-bold px-2.5 py-1 rounded">
+                    SPECIAL OFFER
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-bold text-white">MySQL 8.0 & SQL Complete Master Textbook</h3>
+                  <p className="text-xs text-gray-300 mt-1">Full-Page A4 Reference Manual with multi-line indented query hierarchy, executed queries, result tables & pro tips.</p>
+                </div>
+
+                <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 space-y-1">
+                  <div className="flex items-center justify-between text-xs text-gray-400">
+                    <span>Actual Price:</span>
+                    <span className="line-through font-bold text-gray-400">₹200</span>
+                  </div>
+                  <div className="flex items-center justify-between border-t border-slate-800/80 pt-2">
+                    <span className="text-xs text-cyan-400 font-bold">Offer Price:</span>
+                    <span className="text-3xl font-black text-white">₹49</span>
+                  </div>
+                  <p className="text-[11px] text-cyan-400 text-right font-semibold">You Save ₹151 (75% OFF)</p>
+                </div>
+
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-300">
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                    <span>Database Fundamentals & DDL (#1-#23)</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                    <span>SQL Queries, Joins & Views (#24-#64)</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                    <span>String Functions Exhaustive Reference (#65-#97)</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                    <span>Numeric & Math Functions (#98-#133)</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                    <span>Date & Time Functions Reference (#134-#183)</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                    <span>Advanced Functions & Prepared Statements (#184-#202)</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="space-y-3 pt-2">
+                <button
+                  onClick={() => {
+                    setActivePreviewNote('mysql');
+                    const previewEl = document.getElementById('preview-section');
+                    previewEl?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="w-full py-2 text-xs font-bold text-cyan-400 bg-cyan-950/40 hover:bg-cyan-950/80 border border-cyan-800/50 rounded-lg transition-all flex items-center justify-center space-x-1"
+                >
+                  <span>Preview MySQL Syllabus & SQL Queries</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+
+                <RazorpayButton
+                  noteId="mysql"
+                  priceINR="49"
+                  notesTitle="MySQL 8.0 & SQL Complete Master Textbook (208 Pages)"
+                  buttonLabel="Pay ₹49 & Download MySQL Textbook"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 2: C PROGRAMMING & COMBO OFFER SECTION */}
         <section id="c-section" className="space-y-6 scroll-mt-28">
           <div className="text-center space-y-2">
             <span className="text-xs text-amber-400 font-bold uppercase tracking-widest bg-amber-950/60 border border-amber-800/50 px-3 py-1 rounded-full inline-block">
@@ -353,7 +456,7 @@ export default function NotesPage() {
           </div>
         </section>
 
-        {/* SECTION 2: JAVA NOTES SECTION */}
+        {/* SECTION 3: JAVA NOTES SECTION */}
         <section id="java-section" className="space-y-6 scroll-mt-28">
           <div className="text-center space-y-2">
             <span className="text-xs text-emerald-400 font-bold uppercase tracking-widest bg-emerald-950/60 border border-emerald-800/50 px-3 py-1 rounded-full inline-block">
@@ -440,7 +543,7 @@ export default function NotesPage() {
           </div>
         </section>
 
-        {/* SECTION 3: SPRING BOOT NOTES SECTION */}
+        {/* SECTION 4: SPRING BOOT NOTES SECTION */}
         <section id="spring-boot-section" className="space-y-6 scroll-mt-28">
           <div className="text-center space-y-2">
             <span className="text-xs text-blue-400 font-bold uppercase tracking-widest bg-blue-950/60 border border-blue-800/50 px-3 py-1 rounded-full inline-block">
@@ -527,7 +630,7 @@ export default function NotesPage() {
           </div>
         </section>
 
-        {/* SECTION 4: WEB DEVELOPMENT (RELEASING SOON) SECTION */}
+        {/* SECTION 5: WEB DEVELOPMENT (RELEASING SOON) SECTION */}
         <section id="web-dev-section" className="space-y-6 scroll-mt-28">
           <div className="text-center space-y-2">
             <span className="text-xs text-purple-400 font-bold uppercase tracking-widest bg-purple-950/60 border border-purple-800/50 px-3 py-1 rounded-full inline-block">
@@ -583,6 +686,16 @@ export default function NotesPage() {
 
             <div className="flex flex-wrap items-center gap-2">
               <div className="flex flex-wrap items-center bg-slate-900 border border-slate-800 rounded-lg p-1 gap-1">
+                <button
+                  onClick={() => setActivePreviewNote('mysql')}
+                  className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
+                    activePreviewNote === 'mysql'
+                      ? 'bg-cyan-500 text-slate-950 shadow'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  MySQL (₹49)
+                </button>
                 <button
                   onClick={() => setActivePreviewNote('java')}
                   className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
@@ -646,7 +759,66 @@ export default function NotesPage() {
             </div>
           </div>
 
-          {activePreviewNote === 'java' ? (
+          {activePreviewNote === 'mysql' ? (
+            previewTab === 'syllabus' ? (
+              <div className="space-y-4">
+                <h4 className="font-semibold text-white text-base flex items-center space-x-2">
+                  <Table className="w-4 h-4 text-cyan-400" />
+                  <span>MySQL 8.0 & SQL Master Textbook Breakdown (208 Pages • 202 Subtopics):</span>
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                    <p className="font-bold text-white">1. Database Fundamentals & DDL (#1-#23)</p>
+                    <p className="text-xs text-gray-400">RDBMS, MySQL Architecture, CREATE/DROP/ALTER/TRUNCATE TABLE, Constraints (PK, FK, UNIQUE, CHECK, DEFAULT, AUTO_INCREMENT), Indexes & Views.</p>
+                  </div>
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                    <p className="font-bold text-white">2. MySQL SQL & Queries (#24-#64)</p>
+                    <p className="text-xs text-gray-400">INSERT, SELECT DISTINCT, WHERE, ORDER BY, UPDATE, DELETE, GROUP BY, HAVING, Joins (INNER, LEFT, RIGHT, CROSS, Self), UNION, Subqueries & CASE.</p>
+                  </div>
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                    <p className="font-bold text-white">3. String Functions (#65-#97)</p>
+                    <p className="text-xs text-gray-400">CONCAT, CONCAT_WS, SUBSTR, SUBSTRING_INDEX, REPLACE, REVERSE, TRIM, LTRIM, RTRIM, LPAD, RPAD, STRCMP, FIELD, FIND_IN_SET.</p>
+                  </div>
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                    <p className="font-bold text-white">4. Numeric & Math Functions (#98-#133)</p>
+                    <p className="text-xs text-gray-400">ABS, CEIL, FLOOR, ROUND, TRUNCATE, MOD, POW, SQRT, RAND, LOG, LOG10, LOG2, SIN, COS, TAN, DEGREES, RADIANS.</p>
+                  </div>
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                    <p className="font-bold text-white">5. Date & Time Functions (#134-#183)</p>
+                    <p className="text-xs text-gray-400">ADDDATE, ADDTIME, CURDATE, CURTIME, NOW, DATEDIFF, DATE_ADD, DATE_SUB, DATE_FORMAT, DAYNAME, MONTHNAME, TIMEDIFF.</p>
+                  </div>
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                    <p className="font-bold text-white">6. Advanced Functions & Security (#184-#202)</p>
+                    <p className="text-xs text-gray-400">COALESCE, CAST, CONVERT, IF, IFNULL, ISNULL, NULLIF, Prepared Statements against SQL Injection & User Session functions.</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-gray-300">
+                <div className="text-cyan-400 font-semibold">// MySQL 8.0 Prepared Statement & Foreign Key Example (Page 21 & 29 in MySQL Textbook)</div>
+                <pre className="text-gray-400 overflow-x-auto p-3 bg-slate-900/90 rounded border border-slate-800">
+{`-- Relational Foreign Key Constraint
+CREATE TABLE employees (
+    emp_id INT AUTO_INCREMENT PRIMARY KEY,
+    emp_name VARCHAR(100) NOT NULL,
+    dept_id INT NOT NULL,
+    salary DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (dept_id) REFERENCES departments(dept_id) ON DELETE CASCADE
+);
+
+-- Secure Prepared Statement Execution
+PREPARE stmt_user FROM 
+    'SELECT emp_name, salary FROM employees WHERE dept_id = ? AND salary >= ?';
+
+SET @did = 5;
+SET @min_sal = 75000.00;
+
+EXECUTE stmt_user USING @did, @min_sal;
+DEALLOCATE PREPARE stmt_user;`}
+                </pre>
+              </div>
+            )
+          ) : activePreviewNote === 'java' ? (
             previewTab === 'syllabus' ? (
               <div className="space-y-4">
                 <h4 className="font-semibold text-white text-base flex items-center space-x-2">

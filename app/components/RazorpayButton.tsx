@@ -73,6 +73,7 @@ export default function RazorpayButton({
         'c-100-coding': 'c-100-master-solved-programs.pdf',
         'c-textbook': 'c-programming-master-textbook.pdf',
         'c-combo': 'c-programming-complete-combo.pdf',
+        'mysql': 'mysql-8-complete-master-textbook.pdf',
       };
 
       a.href = url;
