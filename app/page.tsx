@@ -176,31 +176,52 @@ export default function NotesPage() {
             <span className="text-xs text-amber-400 font-bold uppercase tracking-widest bg-amber-950/60 border border-amber-800/50 px-3 py-1 rounded-full inline-block">
               Cognizant & Top MNC Placement Series
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">200+ Cognizant & MNC Based Java Interview Questions</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-2 flex-wrap">
+              <span>200+</span>
+              <span className="text-[#00B2FE] font-black">Cognizant</span>
+              <span>Based Java Interview Questions</span>
+            </h2>
             <p className="text-sm text-gray-400 max-w-2xl mx-auto">
-              Comprehensive 232-page guide containing <strong className="text-amber-300">200+ real interview questions</strong> asked in Cognizant GenC, GenC Elevate, TCS, Infosys & Wipro placement drives.
+              Comprehensive 232-page guide containing <strong className="text-[#00B2FE]">200+ real interview questions</strong> asked in Cognizant GenC, GenC Elevate, TCS, Infosys & Wipro placement drives.
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <div className="bg-gradient-to-b from-[#181a29] to-[#0f111f] border-2 border-amber-500/40 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl glow-blue relative flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="bg-gradient-to-b from-[#0d1428] via-[#0c1020] to-[#090b16] border-2 border-[#00B2FE]/60 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl shadow-blue-950/80 glow-blue relative flex flex-col justify-between">
+              
+              {/* Floating Top Badge */}
+              <div className="absolute -top-3 right-6 bg-gradient-to-r from-blue-600 via-[#00B2FE] to-cyan-400 text-slate-950 text-[10px] font-black px-3.5 py-0.5 rounded-full uppercase tracking-wider animate-pulse flex items-center space-x-1 shadow-lg">
+                <Flame className="w-3 h-3" />
+                <span>COGNIZANT SPECIAL EDITION</span>
+              </div>
+
+              <div className="space-y-5">
+                {/* Prominent Cognizant Logo Brand Banner */}
+                <div className="bg-[#00003a]/90 border border-[#00B2FE]/50 rounded-xl p-3.5 flex items-center justify-between shadow-inner">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 rounded-lg bg-[#000066] border border-[#00B2FE] flex items-center justify-center font-black text-[#00B2FE] text-2xl tracking-tighter shadow-md">
+                      C
+                    </div>
+                    <div>
+                      <div className="text-sm font-black text-white flex items-center space-x-2">
+                        <span className="text-[#00B2FE] tracking-wide text-base">COGNIZANT</span>
+                        <span className="bg-amber-400/20 text-amber-300 border border-amber-400/40 text-[10px] font-bold px-2 py-0.5 rounded">
+                          GenC & Elevate
+                        </span>
+                      </div>
+                      <p className="text-xs text-blue-200 font-medium">200+ Real Technical Interview Questions & Solutions</p>
+                    </div>
+                  </div>
+                  <span className="bg-[#00B2FE] text-slate-950 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider hidden sm:inline-block shadow">
+                    2026 Batch Ready
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
                   <span className="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-950/80 border border-amber-800 px-2.5 py-1 rounded flex items-center space-x-1">
                     <HelpCircle className="w-3.5 h-3.5 mr-1" />
                     232 Pages • 200+ Questions
                   </span>
-                  
-                  {/* Cognizant Company Logo & Badge */}
-                  <div className="flex items-center space-x-2 bg-[#000033]/90 border border-blue-500/50 px-3 py-1 rounded-lg shadow-md">
-                    <svg className="w-5 h-5 text-[#00B2FE]" viewBox="0 0 24 24" fill="currentColor">
-                      <rect width="24" height="24" rx="5" fill="#000066"/>
-                      <path d="M7 7h10v3H10v4h7v3H7V7z" fill="#00B2FE"/>
-                    </svg>
-                    <span className="text-xs font-black text-white tracking-wider">
-                      <span className="text-[#00B2FE]">Cognizant</span> GenC & Elevate
-                    </span>
-                  </div>
 
                   <span className="bg-rose-500/20 text-rose-300 border border-rose-500/40 text-xs font-bold px-2.5 py-1 rounded">
                     HOT SELLER FOR PLACEMENTS
@@ -209,61 +230,61 @@ export default function NotesPage() {
 
                 <div>
                   <h3 className="text-2xl font-bold text-white flex items-center space-x-2">
-                    <span>200+ Cognizant Based Java Interview Guide</span>
+                    <span>200+ <span className="text-[#00B2FE]">Cognizant</span> Java Interview Guide</span>
                   </h3>
                   <p className="text-xs text-gray-300 mt-1">
                     Full 232-page master guide with 200+ real interview questions covering Core Java, OOPs, Collections, Stream API, Exception Handling, Tricky Output Questions & Coding Patterns.
                   </p>
                 </div>
 
-                <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 space-y-1">
+                <div className="bg-slate-900/90 border border-blue-900/60 rounded-xl p-4 space-y-1">
                   <div className="flex items-center justify-between text-xs text-gray-400">
                     <span>Actual Price:</span>
                     <span className="line-through font-bold text-gray-400">₹200</span>
                   </div>
                   <div className="flex items-center justify-between border-t border-slate-800/80 pt-2">
-                    <span className="text-xs text-amber-400 font-bold">Offer Price:</span>
+                    <span className="text-xs text-[#00B2FE] font-bold">Special Offer Price:</span>
                     <span className="text-3xl font-black text-white">₹49</span>
                   </div>
-                  <p className="text-[11px] text-amber-400 text-right font-semibold">You Save ₹151 (75% OFF)</p>
+                  <p className="text-[11px] text-[#00B2FE] text-right font-semibold">You Save ₹151 (75% OFF)</p>
                 </div>
 
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-300">
                   <li className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
-                    <span><strong>200+ Cognizant Real Placement Q&A</strong></span>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00B2FE] flex-shrink-0" />
+                    <span><strong className="text-white">200+ Cognizant Real Placement Q&A</strong></span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
-                    <span>Cognizant GenC & Elevate Technical Assessment</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00B2FE] flex-shrink-0" />
+                    <span>Cognizant GenC & Elevate Assessment Questions</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00B2FE] flex-shrink-0" />
                     <span>Core Java, OOPs & Memory Management</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00B2FE] flex-shrink-0" />
                     <span>Java 8+ Streams & Lambda Expressions</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00B2FE] flex-shrink-0" />
                     <span>Array & String Tricky Coding Patterns</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00B2FE] flex-shrink-0" />
                     <span>Behavioral Questions & Last Minute Revision</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="space-y-3 pt-2">
+              <div className="space-y-3 pt-4">
                 <button
                   onClick={() => {
                     setActivePreviewNote('java-interview');
                     const previewEl = document.getElementById('preview-section');
                     previewEl?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="w-full py-2 text-xs font-bold text-amber-400 bg-amber-950/40 hover:bg-amber-950/80 border border-amber-800/50 rounded-lg transition-all flex items-center justify-center space-x-1"
+                  className="w-full py-2 text-xs font-bold text-[#00B2FE] bg-blue-950/40 hover:bg-blue-950/80 border border-blue-800/50 rounded-lg transition-all flex items-center justify-center space-x-1"
                 >
                   <span>Preview 200+ Cognizant Interview Questions</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -273,7 +294,7 @@ export default function NotesPage() {
                   noteId="java-interview"
                   priceINR="49"
                   notesTitle="200+ Cognizant Based Java Interview Questions Guide (232 Pages)"
-                  buttonLabel="Pay ₹49 & Download Cognizant 200+ Q&A Guide"
+                  buttonLabel="Pay ₹49 & Download 200+ Cognizant Interview Guide"
                 />
               </div>
             </div>
