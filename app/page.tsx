@@ -22,12 +22,14 @@ import {
   Globe,
   Hourglass,
   Table,
+  Mail,
+  HelpCircle,
 } from 'lucide-react';
 import RazorpayButton from './components/RazorpayButton';
 
 export default function NotesPage() {
   const [activePreviewNote, setActivePreviewNote] = useState<
-    'java' | 'spring-boot' | 'c-100-coding' | 'c-textbook' | 'mysql'
+    'java' | 'spring-boot' | 'c-100-coding' | 'c-textbook' | 'mysql' | 'java-interview'
   >('java');
   const [previewTab, setPreviewTab] = useState<'syllabus' | 'sample'>('syllabus');
 
@@ -41,7 +43,7 @@ export default function NotesPage() {
         </span>
         <Flame className="w-4 h-4 text-amber-400 animate-bounce" />
         <span>
-          <strong>FLASH SALE:</strong> MySQL Notes <strong className="text-cyan-300">₹49</strong> | Java <strong className="text-emerald-300">₹49</strong> | Spring Boot <strong className="text-blue-300">₹69</strong> | C 100 Solved <strong className="text-amber-300">₹39</strong> | C Textbook <strong className="text-amber-300">₹39</strong> | <strong>C Combo ₹59!</strong>
+          <strong>FLASH SALE:</strong> Java Interview <strong className="text-amber-300">₹49</strong> | MySQL <strong className="text-cyan-300">₹49</strong> | Java <strong className="text-emerald-300">₹49</strong> | Spring Boot <strong className="text-blue-300">₹69</strong> | C Solved <strong className="text-amber-300">₹39</strong> | <strong>C Combo ₹59!</strong>
         </span>
       </div>
 
@@ -57,6 +59,13 @@ export default function NotesPage() {
             </span>
           </div>
           <div className="flex items-center space-x-4">
+            <a
+              href="mailto:neso.vvy123@gmail.com"
+              className="hidden md:flex items-center text-xs font-semibold text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 px-3 py-1.5 rounded-full space-x-1.5 hover:bg-emerald-950/90 transition-all"
+            >
+              <Mail className="w-3.5 h-3.5" />
+              <span>Queries: neso.vvy123@gmail.com</span>
+            </a>
             <div className="hidden sm:flex items-center text-xs font-medium text-amber-400 bg-amber-950/60 border border-amber-800/50 px-3 py-1 rounded-full space-x-1.5">
               <Clock className="w-3.5 h-3.5" />
               <span>Special Offer Active</span>
@@ -74,6 +83,14 @@ export default function NotesPage() {
       {/* Top Category Navigation Filter Bar */}
       <nav className="bg-[#0d1322]/90 border-b border-slate-800/80 backdrop-blur-md sticky top-16 z-30 py-2.5 px-4 shadow-md">
         <div className="max-w-6xl mx-auto flex items-center justify-center flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm font-bold">
+          <a
+            href="#interview-section"
+            className="px-3.5 py-1.5 rounded-xl bg-amber-500/10 text-amber-300 border border-amber-500/30 hover:bg-amber-500/20 transition-all flex items-center space-x-1.5"
+          >
+            <HelpCircle className="w-4 h-4 text-amber-400" />
+            <span>Interview Questions (₹49)</span>
+          </a>
+
           <a
             href="#mysql-section"
             className="px-3.5 py-1.5 rounded-xl bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/20 transition-all flex items-center space-x-1.5"
@@ -149,6 +166,100 @@ export default function NotesPage() {
             <div className="flex items-center space-x-1.5 bg-slate-900/60 border border-slate-800 px-3 py-1.5 rounded-lg">
               <BookOpen className="w-4 h-4 text-blue-400" />
               <span>Printable PDF Format</span>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 0: INTERVIEW QUESTIONS & GUIDES SECTION */}
+        <section id="interview-section" className="space-y-6 scroll-mt-28">
+          <div className="text-center space-y-2">
+            <span className="text-xs text-amber-400 font-bold uppercase tracking-widest bg-amber-950/60 border border-amber-800/50 px-3 py-1 rounded-full inline-block">
+              Interview Questions & Career Preparation Series
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">Interview Questions & Master Guides</h2>
+            <p className="text-sm text-gray-400 max-w-2xl mx-auto">
+              Handcrafted Technical Interview Solutions, Coding Patterns, Streams, Memory Management & Placement Q&A.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-gradient-to-b from-[#181a29] to-[#0f111f] border-2 border-amber-500/40 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl glow-blue relative flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-950/80 border border-amber-800 px-2.5 py-1 rounded flex items-center space-x-1">
+                    <HelpCircle className="w-3.5 h-3.5 mr-1" />
+                    232 Pages • Interview Master Guide
+                  </span>
+                  <span className="bg-rose-500/20 text-rose-300 border border-rose-500/40 text-xs font-bold px-2.5 py-1 rounded">
+                    MUST HAVE FOR PLACEMENTS
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Java Interview Guide</h3>
+                  <p className="text-xs text-gray-300 mt-1">Full 232-page guide covering Core Java, OOPs, Collections, Stream API, Exception Handling, Coding Patterns & Behavioral Questions.</p>
+                </div>
+
+                <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 space-y-1">
+                  <div className="flex items-center justify-between text-xs text-gray-400">
+                    <span>Actual Price:</span>
+                    <span className="line-through font-bold text-gray-400">₹200</span>
+                  </div>
+                  <div className="flex items-center justify-between border-t border-slate-800/80 pt-2">
+                    <span className="text-xs text-amber-400 font-bold">Offer Price:</span>
+                    <span className="text-3xl font-black text-white">₹49</span>
+                  </div>
+                  <p className="text-[11px] text-amber-400 text-right font-semibold">You Save ₹151 (75% OFF)</p>
+                </div>
+
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-300">
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                    <span>232 Pages Complete Java Q&A</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                    <span>Core Java & Advanced OOPs Scenarios</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                    <span>Output-Based & Tricky Coding Questions</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                    <span>Java 8+ Streams & Lambda Expressions</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                    <span>Array & String Coding Interview Patterns</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                    <span>Behavioural Q&A & Quick Revision Sheet</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="space-y-3 pt-2">
+                <button
+                  onClick={() => {
+                    setActivePreviewNote('java-interview');
+                    const previewEl = document.getElementById('preview-section');
+                    previewEl?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="w-full py-2 text-xs font-bold text-amber-400 bg-amber-950/40 hover:bg-amber-950/80 border border-amber-800/50 rounded-lg transition-all flex items-center justify-center space-x-1"
+                >
+                  <span>Preview Java Interview Q&A Syllabus</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+
+                <RazorpayButton
+                  noteId="java-interview"
+                  priceINR="49"
+                  notesTitle="Java Interview Guide (232 Pages)"
+                  buttonLabel="Pay ₹49 & Download Java Interview Guide"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -687,6 +798,16 @@ export default function NotesPage() {
             <div className="flex flex-wrap items-center gap-2">
               <div className="flex flex-wrap items-center bg-slate-900 border border-slate-800 rounded-lg p-1 gap-1">
                 <button
+                  onClick={() => setActivePreviewNote('java-interview')}
+                  className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
+                    activePreviewNote === 'java-interview'
+                      ? 'bg-amber-500 text-slate-950 shadow'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  Java Interview (₹49)
+                </button>
+                <button
                   onClick={() => setActivePreviewNote('mysql')}
                   className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
                     activePreviewNote === 'mysql'
@@ -759,7 +880,74 @@ export default function NotesPage() {
             </div>
           </div>
 
-          {activePreviewNote === 'mysql' ? (
+          {activePreviewNote === 'java-interview' ? (
+            previewTab === 'syllabus' ? (
+              <div className="space-y-4">
+                <h4 className="font-semibold text-white text-base flex items-center space-x-2">
+                  <HelpCircle className="w-4 h-4 text-amber-400" />
+                  <span>Java Interview Guide Breakdown (232 Pages):</span>
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                    <p className="font-bold text-white">1. Core Java & OOPs Concepts</p>
+                    <p className="text-xs text-gray-400">Classloaders, JVM memory architecture, JDK vs JRE, immutability, static vs instance, interface vs abstract class.</p>
+                  </div>
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                    <p className="font-bold text-white">2. Output-Based & Tricky Questions</p>
+                    <p className="text-xs text-gray-400">Method overloading/overriding tricks, exception propagation order, try-catch-finally edge cases & return behaviors.</p>
+                  </div>
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                    <p className="font-bold text-white">3. Collections Framework & Generics</p>
+                    <p className="text-xs text-gray-400">HashMap internal working, ConcurrentHashMap, ArrayList vs LinkedList, Fail-fast vs Fail-safe iterators.</p>
+                  </div>
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                    <p className="font-bold text-white">4. Java 8+ Streams & Lambdas</p>
+                    <p className="text-xs text-gray-400">Map, filter, reduce, Collectors, Optional handling, Parallel Streams & Functional Interfaces.</p>
+                  </div>
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                    <p className="font-bold text-white">5. Array & String Coding Questions</p>
+                    <p className="text-xs text-gray-400">Two pointer technique, sliding window, palindrome, sub-arrays, string anagrams & frequency count.</p>
+                  </div>
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                    <p className="font-bold text-white">6. Behavioral & Quick Cheat Sheet</p>
+                    <p className="text-xs text-gray-400">STAR method interview responses, design patterns overview & last-minute revision summary.</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-gray-300">
+                <div className="text-amber-400 font-semibold">// Stream API Frequency Count & Custom Key Contract (Page 84 & 142 in Java Interview Guide)</div>
+                <pre className="text-gray-400 overflow-x-auto p-3 bg-slate-900/90 rounded border border-slate-800">
+{`// 1. Stream API Top Frequency Count Interview Problem
+List<String> items = Arrays.asList("apple", "banana", "apple", "orange", "banana", "apple");
+
+Map<String, Long> countMap = items.stream()
+    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+System.out.println(countMap); // {orange=1, banana=2, apple=3}
+
+// 2. HashMap Custom Key Contract (equals & hashCode)
+class Student {
+    private int id;
+    private String name;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return id == student.id && Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+}`}
+                </pre>
+              </div>
+            )
+          ) : activePreviewNote === 'mysql' ? (
             previewTab === 'syllabus' ? (
               <div className="space-y-4">
                 <h4 className="font-semibold text-white text-base flex items-center space-x-2">
@@ -1065,7 +1253,11 @@ int main() {
 
       {/* Footer */}
       <footer className="border-t border-gray-800/80 bg-[#0d131f] py-8 text-center text-xs text-gray-500">
-        <div className="max-w-6xl mx-auto px-4 space-y-2">
+        <div className="max-w-6xl mx-auto px-4 space-y-3">
+          <p className="flex items-center justify-center space-x-2 text-gray-300 font-medium">
+            <Mail className="w-4 h-4 text-emerald-400" />
+            <span>For any queries or support, email us at: <a href="mailto:neso.vvy123@gmail.com" className="text-emerald-400 hover:underline font-bold">neso.vvy123@gmail.com</a></span>
+          </p>
           <p>© {new Date().getFullYear()} Campus Notes. All rights reserved.</p>
           <p>Powered by Next.js, Razorpay & Vercel Serverless Functions.</p>
         </div>

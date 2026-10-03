@@ -49,7 +49,7 @@ export default function RazorpayButton({
     noteId?: string;
   }) => {
     try {
-      setStatusText(`Downloading ${noteId === 'spring-boot' ? 'Spring Boot' : 'Java'} Notes PDF...`);
+      setStatusText(`Downloading ${noteId === 'spring-boot' ? 'Spring Boot' : noteId === 'java-interview' ? 'Java Interview Guide' : 'Java'} Notes PDF...`);
       const response = await fetch('/api/verify-and-download', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -74,6 +74,7 @@ export default function RazorpayButton({
         'c-textbook': 'c-programming-master-textbook.pdf',
         'c-combo': 'c-programming-complete-combo.pdf',
         'mysql': 'mysql-8-complete-master-textbook.pdf',
+        'java-interview': 'java-interview-guide.pdf',
       };
 
       a.href = url;
@@ -179,7 +180,7 @@ export default function RazorpayButton({
     }
   };
 
-  const defaultButtonLabel = `Pay ₹${priceINR} & Download ${noteId === 'spring-boot' ? 'Spring Boot' : 'Java'} Notes`;
+  const defaultButtonLabel = `Pay ₹${priceINR} & Download ${noteId === 'spring-boot' ? 'Spring Boot' : noteId === 'java-interview' ? 'Java Interview Guide' : 'Java'} Notes`;
 
   return (
     <div className="w-full flex flex-col items-center justify-center space-y-3">

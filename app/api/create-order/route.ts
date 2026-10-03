@@ -16,6 +16,7 @@ export async function POST(req: Request) {
       'c-textbook': 39,
       'c-combo': 59,
       'mysql': 49,
+      'java-interview': 49,
     };
 
     const productNameMap: Record<string, string> = {
@@ -25,6 +26,7 @@ export async function POST(req: Request) {
       'c-textbook': 'C Programming Master Textbook Notes',
       'c-combo': 'C Programming Complete Combo (Both Books)',
       'mysql': 'MySQL 8.0 & SQL Complete Master Textbook',
+      'java-interview': 'Java Interview Guide (232 Pages)',
     };
 
     const priceINR = priceMap[noteId] || 49;

@@ -20,12 +20,15 @@ async function testBackendSecurity() {
   const privatePdfCCombo = path.join(process.cwd(), 'private_assets', 'c-combo-notes.pdf');
   const privatePdfMySQL = path.join(process.cwd(), 'private_assets', 'mysql-notes.pdf');
 
+  const privatePdfJavaInterview = path.join(process.cwd(), 'private_assets', 'java-interview-notes.pdf');
+
   const existsJava = fs.existsSync(privatePdfJava);
   const existsSpringBoot = fs.existsSync(privatePdfSpringBoot);
   const existsCCoding = fs.existsSync(privatePdfCCoding);
   const existsCTextbook = fs.existsSync(privatePdfCTextbook);
   const existsCCombo = fs.existsSync(privatePdfCCombo);
   const existsMySQL = fs.existsSync(privatePdfMySQL);
+  const existsJavaInterview = fs.existsSync(privatePdfJavaInterview);
   
   console.log(`[TEST 2a] Java PDF in private_assets/? ${existsJava ? 'PASS (Secure server storage)' : 'FAIL (Missing file)'}`);
   console.log(`[TEST 2b] Spring Boot PDF in private_assets/? ${existsSpringBoot ? 'PASS (Secure server storage)' : 'FAIL (Missing file)'}`);
@@ -33,13 +36,14 @@ async function testBackendSecurity() {
   console.log(`[TEST 2d] C Textbook PDF in private_assets/? ${existsCTextbook ? 'PASS (Secure server storage)' : 'FAIL (Missing file)'}`);
   console.log(`[TEST 2e] C Combo PDF in private_assets/? ${existsCCombo ? 'PASS (Secure server storage)' : 'FAIL (Missing file)'}`);
   console.log(`[TEST 2f] MySQL PDF in private_assets/? ${existsMySQL ? 'PASS (Secure server storage)' : 'FAIL (Missing file)'}`);
+  console.log(`[TEST 2g] Java Interview PDF in private_assets/? ${existsJavaInterview ? 'PASS (Secure server storage)' : 'FAIL (Missing file)'}`);
 
   // Test 3: Check API endpoints code verification
   const verifyRouteContent = fs.readFileSync(path.join(process.cwd(), 'app', 'api', 'verify-and-download', 'route.ts'), 'utf-8');
   const hasHmacCheck = verifyRouteContent.includes('crypto.createHmac') || verifyRouteContent.includes('generatedSignature');
   console.log(`[TEST 3] Cryptographic HMAC SHA256 Signature Verification present? ${hasHmacCheck ? 'PASS' : 'FAIL'}`);
 
-  if (!existsInPublic && existsJava && existsSpringBoot && existsCCoding && existsCTextbook && existsCCombo && existsMySQL && hasHmacCheck) {
+  if (!existsInPublic && existsJava && existsSpringBoot && existsCCoding && existsCTextbook && existsCCombo && existsMySQL && existsJavaInterview && hasHmacCheck) {
     console.log('\n✅ ALL SECURITY & ASSET VERIFICATION TESTS PASSED!');
   } else {
     console.error('\n❌ SECURITY TEST FAILED');

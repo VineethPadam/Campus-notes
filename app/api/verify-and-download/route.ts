@@ -77,6 +77,10 @@ async function handleVerificationAndDownload(
       serverFile: 'mysql-notes.pdf',
       downloadName: 'mysql-8-complete-master-textbook.pdf',
     },
+    'java-interview': {
+      serverFile: 'java-interview-notes.pdf',
+      downloadName: 'java-interview-guide.pdf',
+    },
   };
 
   const fileConfig = fileNameMap[noteId] || fileNameMap['java'];
