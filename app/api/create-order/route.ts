@@ -26,7 +26,7 @@ export async function POST(req: Request) {
       'c-textbook': 'C Programming Master Textbook Notes',
       'c-combo': 'C Programming Complete Combo (Both Books)',
       'mysql': 'MySQL 8.0 & SQL Complete Master Textbook',
-      'java-interview': 'Java Interview Guide (232 Pages)',
+      'java-interview': '200+ Cognizant Based Java Interview Questions Guide (232 Pages)',
     };
 
     const priceINR = priceMap[noteId] || 49;

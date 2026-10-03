@@ -79,7 +79,7 @@ async function handleVerificationAndDownload(
     },
     'java-interview': {
       serverFile: 'java-interview-notes.pdf',
-      downloadName: 'java-interview-guide.pdf',
+      downloadName: 'cognizant-200-java-interview-guide.pdf',
     },
   };
 
