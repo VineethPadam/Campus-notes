@@ -43,7 +43,7 @@ export default function NotesPage() {
         </span>
         <Flame className="w-4 h-4 text-amber-400 animate-bounce" />
         <span>
-          <strong>FLASH SALE:</strong> 200+ Cognizant Java Q&A <strong className="text-amber-300">₹49</strong> | MySQL <strong className="text-cyan-300">₹49</strong> | Java <strong className="text-emerald-300">₹49</strong> | Spring Boot <strong className="text-blue-300">₹69</strong> | C Notes <strong className="text-amber-300">₹39!</strong>
+          <strong>JUST RELEASED:</strong> 200+ Cognizant Based Java Interview Q&A Guide — <strong className="text-amber-300">Special Offer ₹49!</strong>
         </span>
       </div>
 
@@ -142,7 +142,7 @@ export default function NotesPage() {
         <section className="text-center space-y-6 pt-4">
           <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-950/80 via-amber-950/80 to-rose-950/80 border border-rose-500/40 px-4 py-1.5 rounded-full text-xs text-rose-200 font-semibold shadow-inner">
             <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
-            <span>⏳ EXCLUSIVE DISCOUNTS: 200+ Cognizant Q&A ₹49 • MySQL ₹49 • Java ₹49 • C Notes ₹39!</span>
+            <span>🔥 NEW RELEASE: 200+ Cognizant Based Java Interview Q&A Guide (232 Pages) — Only ₹49!</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
