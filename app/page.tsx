@@ -31,7 +31,6 @@ export default function NotesPage() {
   const [activePreviewNote, setActivePreviewNote] = useState<
     'java' | 'spring-boot' | 'c-100-coding' | 'c-textbook' | 'mysql' | 'java-interview'
   >('java');
-  const [previewTab, setPreviewTab] = useState<'syllabus' | 'sample'>('syllabus');
 
   return (
     <div className="min-h-screen bg-[#0b0f17] text-gray-100 flex flex-col justify-between">
@@ -763,7 +762,7 @@ export default function NotesPage() {
           </div>
         </section>
 
-        {/* Interactive Syllabus & Code Preview Box */}
+        {/* Interactive Syllabus Inspector Box */}
         <section id="preview-section" className="bg-[#0f172a]/90 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl scroll-mt-28">
           <div className="flex flex-wrap items-center justify-between border-b border-slate-800 pb-4 gap-4">
             <div>
@@ -771,403 +770,239 @@ export default function NotesPage() {
                 <Layers className="w-5 h-5 text-emerald-400" />
                 <span>Interactive Notes Inspector</span>
               </h3>
-              <p className="text-xs text-gray-400">Switch tabs to view detailed module breakdowns and code samples.</p>
+              <p className="text-xs text-gray-400">View detailed module breakdowns and syllabus topics for each course.</p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <div className="flex flex-wrap items-center bg-slate-900 border border-slate-800 rounded-lg p-1 gap-1">
-                <button
-                  onClick={() => setActivePreviewNote('java-interview')}
-                  className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
-                    activePreviewNote === 'java-interview'
-                      ? 'bg-amber-500 text-slate-950 shadow'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  200+ Cognizant Q&A (₹49)
-                </button>
-                <button
-                  onClick={() => setActivePreviewNote('mysql')}
-                  className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
-                    activePreviewNote === 'mysql'
-                      ? 'bg-cyan-500 text-slate-950 shadow'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  MySQL (₹49)
-                </button>
-                <button
-                  onClick={() => setActivePreviewNote('java')}
-                  className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
-                    activePreviewNote === 'java'
-                      ? 'bg-emerald-500 text-slate-950 shadow'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  Java (₹49)
-                </button>
-                <button
-                  onClick={() => setActivePreviewNote('spring-boot')}
-                  className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
-                    activePreviewNote === 'spring-boot'
-                      ? 'bg-blue-500 text-slate-950 shadow'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  Spring Boot (₹69)
-                </button>
-                <button
-                  onClick={() => setActivePreviewNote('c-100-coding')}
-                  className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
-                    activePreviewNote === 'c-100-coding'
-                      ? 'bg-amber-500 text-slate-950 shadow'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  C 100 Programs (₹39)
-                </button>
-                <button
-                  onClick={() => setActivePreviewNote('c-textbook')}
-                  className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
-                    activePreviewNote === 'c-textbook'
-                      ? 'bg-purple-500 text-slate-950 shadow'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  C Textbook (₹39)
-                </button>
-              </div>
-
-              <div className="flex items-center bg-slate-900 border border-slate-800 rounded-lg p-1 space-x-1">
-                <button
-                  onClick={() => setPreviewTab('syllabus')}
-                  className={`px-2.5 py-1 text-xs font-semibold rounded transition-all ${
-                    previewTab === 'syllabus' ? 'bg-slate-800 text-white font-bold' : 'text-gray-400'
-                  }`}
-                >
-                  Syllabus
-                </button>
-                <button
-                  onClick={() => setPreviewTab('sample')}
-                  className={`px-2.5 py-1 text-xs font-semibold rounded transition-all ${
-                    previewTab === 'sample' ? 'bg-slate-800 text-white font-bold' : 'text-gray-400'
-                  }`}
-                >
-                  Code Preview
-                </button>
-              </div>
+            <div className="flex flex-wrap items-center bg-slate-900 border border-slate-800 rounded-lg p-1 gap-1">
+              <button
+                onClick={() => setActivePreviewNote('java-interview')}
+                className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
+                  activePreviewNote === 'java-interview'
+                    ? 'bg-amber-500 text-slate-950 shadow'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                200+ Cognizant Q&A (₹49)
+              </button>
+              <button
+                onClick={() => setActivePreviewNote('mysql')}
+                className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
+                  activePreviewNote === 'mysql'
+                    ? 'bg-cyan-500 text-slate-950 shadow'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                MySQL (₹49)
+              </button>
+              <button
+                onClick={() => setActivePreviewNote('java')}
+                className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
+                  activePreviewNote === 'java'
+                    ? 'bg-emerald-500 text-slate-950 shadow'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Java (₹49)
+              </button>
+              <button
+                onClick={() => setActivePreviewNote('spring-boot')}
+                className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
+                  activePreviewNote === 'spring-boot'
+                    ? 'bg-blue-500 text-slate-950 shadow'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Spring Boot (₹69)
+              </button>
+              <button
+                onClick={() => setActivePreviewNote('c-100-coding')}
+                className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
+                  activePreviewNote === 'c-100-coding'
+                    ? 'bg-amber-500 text-slate-950 shadow'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                C 100 Programs (₹39)
+              </button>
+              <button
+                onClick={() => setActivePreviewNote('c-textbook')}
+                className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
+                  activePreviewNote === 'c-textbook'
+                    ? 'bg-purple-500 text-slate-950 shadow'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                C Textbook (₹39)
+              </button>
             </div>
           </div>
 
           {activePreviewNote === 'java-interview' ? (
-            previewTab === 'syllabus' ? (
-              <div className="space-y-4">
-                <h4 className="font-semibold text-white text-base flex items-center space-x-2">
-                  <HelpCircle className="w-4 h-4 text-amber-400" />
-                  <span>200+ Cognizant & MNC Based Java Interview Questions Breakdown (232 Pages):</span>
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">1. Cognizant Core Java & OOPs (Q#1 - Q#45)</p>
-                    <p className="text-xs text-gray-400">Classloaders, JVM memory architecture, JDK vs JRE, immutability, static vs instance, interface vs abstract class.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">2. Cognizant Output-Based & Tricky Coding (Q#46 - Q#90)</p>
-                    <p className="text-xs text-gray-400">Method overloading/overriding tricks, exception propagation order, try-catch-finally edge cases & return behaviors.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">3. Cognizant Collections & Generics (Q#91 - Q#135)</p>
-                    <p className="text-xs text-gray-400">HashMap internal working, ConcurrentHashMap, ArrayList vs LinkedList, Fail-fast vs Fail-safe iterators.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">4. Cognizant Java 8+ Streams & Lambdas (Q#136 - Q#170)</p>
-                    <p className="text-xs text-gray-400">Map, filter, reduce, Collectors, Optional handling, Parallel Streams & Functional Interfaces.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">5. Cognizant Array & String Tricky Coding (Q#171 - Q#200+)</p>
-                    <p className="text-xs text-gray-400">Two pointer technique, sliding window, palindrome, sub-arrays, string anagrams & frequency count.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">6. Cognizant GenC Elevate Behavioral Sheet</p>
-                    <p className="text-xs text-gray-400">STAR method interview responses, design patterns overview & last-minute placement revision summary.</p>
-                  </div>
+            <div className="space-y-4">
+              <h4 className="font-semibold text-white text-base flex items-center space-x-2">
+                <HelpCircle className="w-4 h-4 text-amber-400" />
+                <span>200+ Cognizant & MNC Based Java Interview Questions Breakdown (232 Pages):</span>
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">1. Cognizant Core Java & OOPs (Q#1 - Q#45)</p>
+                  <p className="text-xs text-gray-400">Classloaders, JVM memory architecture, JDK vs JRE, immutability, static vs instance, interface vs abstract class.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">2. Cognizant Output-Based & Tricky Coding (Q#46 - Q#90)</p>
+                  <p className="text-xs text-gray-400">Method overloading/overriding tricks, exception propagation order, try-catch-finally edge cases & return behaviors.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">3. Cognizant Collections & Generics (Q#91 - Q#135)</p>
+                  <p className="text-xs text-gray-400">HashMap internal working, ConcurrentHashMap, ArrayList vs LinkedList, Fail-fast vs Fail-safe iterators.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">4. Cognizant Java 8+ Streams & Lambdas (Q#136 - Q#170)</p>
+                  <p className="text-xs text-gray-400">Map, filter, reduce, Collectors, Optional handling, Parallel Streams & Functional Interfaces.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">5. Cognizant Array & String Tricky Coding (Q#171 - Q#200+)</p>
+                  <p className="text-xs text-gray-400">Two pointer technique, sliding window, palindrome, sub-arrays, string anagrams & frequency count.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">6. Cognizant GenC Elevate Behavioral Sheet</p>
+                  <p className="text-xs text-gray-400">STAR method interview responses, design patterns overview & last-minute placement revision summary.</p>
                 </div>
               </div>
-            ) : (
-              <div className="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-gray-300">
-                <div className="text-amber-400 font-semibold">// Stream API Frequency Count & Custom Key Contract (Page 84 & 142 in Java Interview Guide)</div>
-                <pre className="text-gray-400 overflow-x-auto p-3 bg-slate-900/90 rounded border border-slate-800">
-{`// 1. Stream API Top Frequency Count Interview Problem
-List<String> items = Arrays.asList("apple", "banana", "apple", "orange", "banana", "apple");
-
-Map<String, Long> countMap = items.stream()
-    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-
-System.out.println(countMap); // {orange=1, banana=2, apple=3}
-
-// 2. HashMap Custom Key Contract (equals & hashCode)
-class Student {
-    private int id;
-    private String name;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return id == student.id && Objects.equals(name, student.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
-}`}
-                </pre>
-              </div>
-            )
+            </div>
           ) : activePreviewNote === 'mysql' ? (
-            previewTab === 'syllabus' ? (
-              <div className="space-y-4">
-                <h4 className="font-semibold text-white text-base flex items-center space-x-2">
-                  <Table className="w-4 h-4 text-cyan-400" />
-                  <span>MySQL 8.0 & SQL Master Textbook Breakdown (208 Pages • 202 Subtopics):</span>
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">1. Database Fundamentals & DDL (#1-#23)</p>
-                    <p className="text-xs text-gray-400">RDBMS, MySQL Architecture, CREATE/DROP/ALTER/TRUNCATE TABLE, Constraints (PK, FK, UNIQUE, CHECK, DEFAULT, AUTO_INCREMENT), Indexes & Views.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">2. MySQL SQL & Queries (#24-#64)</p>
-                    <p className="text-xs text-gray-400">INSERT, SELECT DISTINCT, WHERE, ORDER BY, UPDATE, DELETE, GROUP BY, HAVING, Joins (INNER, LEFT, RIGHT, CROSS, Self), UNION, Subqueries & CASE.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">3. String Functions (#65-#97)</p>
-                    <p className="text-xs text-gray-400">CONCAT, CONCAT_WS, SUBSTR, SUBSTRING_INDEX, REPLACE, REVERSE, TRIM, LTRIM, RTRIM, LPAD, RPAD, STRCMP, FIELD, FIND_IN_SET.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">4. Numeric & Math Functions (#98-#133)</p>
-                    <p className="text-xs text-gray-400">ABS, CEIL, FLOOR, ROUND, TRUNCATE, MOD, POW, SQRT, RAND, LOG, LOG10, LOG2, SIN, COS, TAN, DEGREES, RADIANS.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">5. Date & Time Functions (#134-#183)</p>
-                    <p className="text-xs text-gray-400">ADDDATE, ADDTIME, CURDATE, CURTIME, NOW, DATEDIFF, DATE_ADD, DATE_SUB, DATE_FORMAT, DAYNAME, MONTHNAME, TIMEDIFF.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">6. Advanced Functions & Security (#184-#202)</p>
-                    <p className="text-xs text-gray-400">COALESCE, CAST, CONVERT, IF, IFNULL, ISNULL, NULLIF, Prepared Statements against SQL Injection & User Session functions.</p>
-                  </div>
+            <div className="space-y-4">
+              <h4 className="font-semibold text-white text-base flex items-center space-x-2">
+                <Table className="w-4 h-4 text-cyan-400" />
+                <span>MySQL 8.0 & SQL Master Textbook Breakdown (208 Pages • 202 Subtopics):</span>
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">1. Database Fundamentals & DDL (#1-#23)</p>
+                  <p className="text-xs text-gray-400">RDBMS, MySQL Architecture, CREATE/DROP/ALTER/TRUNCATE TABLE, Constraints (PK, FK, UNIQUE, CHECK, DEFAULT, AUTO_INCREMENT), Indexes & Views.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">2. MySQL SQL & Queries (#24-#64)</p>
+                  <p className="text-xs text-gray-400">INSERT, SELECT DISTINCT, WHERE, ORDER BY, UPDATE, DELETE, GROUP BY, HAVING, Joins (INNER, LEFT, RIGHT, CROSS, Self), UNION, Subqueries & CASE.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">3. String Functions (#65-#97)</p>
+                  <p className="text-xs text-gray-400">CONCAT, CONCAT_WS, SUBSTR, SUBSTRING_INDEX, REPLACE, REVERSE, TRIM, LTRIM, RTRIM, LPAD, RPAD, STRCMP, FIELD, FIND_IN_SET.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">4. Numeric & Math Functions (#98-#133)</p>
+                  <p className="text-xs text-gray-400">ABS, CEIL, FLOOR, ROUND, TRUNCATE, MOD, POW, SQRT, RAND, LOG, LOG10, LOG2, SIN, COS, TAN, DEGREES, RADIANS.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">5. Date & Time Functions (#134-#183)</p>
+                  <p className="text-xs text-gray-400">ADDDATE, ADDTIME, CURDATE, CURTIME, NOW, DATEDIFF, DATE_ADD, DATE_SUB, DATE_FORMAT, DAYNAME, MONTHNAME, TIMEDIFF.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">6. Advanced Functions & Security (#184-#202)</p>
+                  <p className="text-xs text-gray-400">COALESCE, CAST, CONVERT, IF, IFNULL, ISNULL, NULLIF, Prepared Statements against SQL Injection & User Session functions.</p>
                 </div>
               </div>
-            ) : (
-              <div className="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-gray-300">
-                <div className="text-cyan-400 font-semibold">// MySQL 8.0 Prepared Statement & Foreign Key Example (Page 21 & 29 in MySQL Textbook)</div>
-                <pre className="text-gray-400 overflow-x-auto p-3 bg-slate-900/90 rounded border border-slate-800">
-{`-- Relational Foreign Key Constraint
-CREATE TABLE employees (
-    emp_id INT AUTO_INCREMENT PRIMARY KEY,
-    emp_name VARCHAR(100) NOT NULL,
-    dept_id INT NOT NULL,
-    salary DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (dept_id) REFERENCES departments(dept_id) ON DELETE CASCADE
-);
-
--- Secure Prepared Statement Execution
-PREPARE stmt_user FROM 
-    'SELECT emp_name, salary FROM employees WHERE dept_id = ? AND salary >= ?';
-
-SET @did = 5;
-SET @min_sal = 75000.00;
-
-EXECUTE stmt_user USING @did, @min_sal;
-DEALLOCATE PREPARE stmt_user;`}
-                </pre>
-              </div>
-            )
+            </div>
           ) : activePreviewNote === 'java' ? (
-            previewTab === 'syllabus' ? (
-              <div className="space-y-4">
-                <h4 className="font-semibold text-white text-base flex items-center space-x-2">
-                  <Cpu className="w-4 h-4 text-emerald-400" />
-                  <span>Java Notes Module Breakdown (117 Pages):</span>
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">1. History & Features of Java</p>
-                    <p className="text-xs text-gray-400">Green team history, Oak to Java evolution, JDK releases, 10 key features.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">2. JVM Architecture & Execution</p>
-                    <p className="text-xs text-gray-400">Bytecode compilation (.class), Interpreter vs JIT, Machine code execution flow.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">3. Scanner Input & Large Numbers</p>
-                    <p className="text-xs text-gray-400">Scanner methods, BigInteger and BigDecimal arithmetic handling.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">4. OOPs, Constructors & Inheritance</p>
-                    <p className="text-xs text-gray-400">`extends`, `super`, constructor chaining, method overriding vs overloading.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">5. Interfaces & Exception Handling</p>
-                    <p className="text-xs text-gray-400">Abstract classes, Java 8 interface methods, `try-catch`, custom exceptions (`throws`/`throw`).</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">6. Strings & JVM Memory Model</p>
-                    <p className="text-xs text-gray-400">String/StringBuffer/StringBuilder, Enums, Metaspace, Heap, Stack, PC Register & JNI.</p>
-                  </div>
+            <div className="space-y-4">
+              <h4 className="font-semibold text-white text-base flex items-center space-x-2">
+                <Cpu className="w-4 h-4 text-emerald-400" />
+                <span>Java Notes Module Breakdown (117 Pages):</span>
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">1. History & Features of Java</p>
+                  <p className="text-xs text-gray-400">Green team history, Oak to Java evolution, JDK releases, 10 key features.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">2. JVM Architecture & Execution</p>
+                  <p className="text-xs text-gray-400">Bytecode compilation (.class), Interpreter vs JIT, Machine code execution flow.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">3. Scanner Input & Large Numbers</p>
+                  <p className="text-xs text-gray-400">Scanner methods, BigInteger and BigDecimal arithmetic handling.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">4. OOPs, Constructors & Inheritance</p>
+                  <p className="text-xs text-gray-400">`extends`, `super`, constructor chaining, method overriding vs overloading.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">5. Interfaces & Exception Handling</p>
+                  <p className="text-xs text-gray-400">Abstract classes, Java 8 interface methods, `try-catch`, custom exceptions (`throws`/`throw`).</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">6. Strings & JVM Memory Model</p>
+                  <p className="text-xs text-gray-400">String/StringBuffer/StringBuilder, Enums, Metaspace, Heap, Stack, PC Register & JNI.</p>
                 </div>
               </div>
-            ) : (
-              <div className="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-gray-300">
-                <div className="text-emerald-400 font-semibold">// Custom Exception Sample (Page 62 in Java Notes)</div>
-                <pre className="text-gray-400 overflow-x-auto p-3 bg-slate-900/90 rounded border border-slate-800">
-{`class InvalidAgeException extends Exception {
-    public InvalidAgeException(String message) {
-        super(message);
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        try {
-            System.out.print("Enter age: ");
-            int age = input.nextInt();
-            if (age < 18) throw new InvalidAgeException("Must be 18+");
-            System.out.println("Access granted!");
-        } catch (InvalidAgeException e) {
-            System.out.println("Validation error: " + e.getMessage());
-        }
-    }
-}`}
-                </pre>
-              </div>
-            )
+            </div>
           ) : activePreviewNote === 'spring-boot' ? (
-            previewTab === 'syllabus' ? (
-              <div className="space-y-4">
-                <h4 className="font-semibold text-white text-base flex items-center space-x-2">
-                  <Server className="w-4 h-4 text-blue-400" />
-                  <span>Spring Boot & JPA Notes Module Breakdown (85 Pages):</span>
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">1. Spring vs Spring Boot & IoC</p>
-                    <p className="text-xs text-gray-400">Auto-configuration, Embedded Tomcat, JAR vs WAR, BeanFactory vs ApplicationContext.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">2. Dependency Injection & Stereotypes</p>
-                    <p className="text-xs text-gray-400">Constructor Injection, `@Component`, `@Controller`, `@RestController`, `@Service`, `@Repository`.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">3. Controller Inputs & Mappings</p>
-                    <p className="text-xs text-gray-400">`@RequestMapping`, `@PathVariable`, `@RequestParam`, `@RequestBody`, Jackson conversion, `@RequestPart`.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">4. Spring Data JPA & ORM</p>
-                    <p className="text-xs text-gray-400">JDBC &rarr; Hibernate &rarr; JPA. `@Entity`, `@Id`, `@Column`, Entity Lifecycle (Transient, Persistent, Detached, Removed).</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">5. SOLID Principles & Profiling</p>
-                    <p className="text-xs text-gray-400">SRP, OCP, LSP, ISP, DIP code examples; `@Primary`, `@Qualifier`, `@Bean`, `@Profile` (`dev`/`prod`), Actuator.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">6. Bean Lifecycle & Spring AOP</p>
-                    <p className="text-xs text-gray-400">`@ComponentScan`, `@PostConstruct`, `InitializingBean`, `@PreDestroy`, Aspect, Pointcuts & JDK vs CGLIB Proxies.</p>
-                  </div>
+            <div className="space-y-4">
+              <h4 className="font-semibold text-white text-base flex items-center space-x-2">
+                <Server className="w-4 h-4 text-blue-400" />
+                <span>Spring Boot & JPA Notes Module Breakdown (85 Pages):</span>
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">1. Spring vs Spring Boot & IoC</p>
+                  <p className="text-xs text-gray-400">Auto-configuration, Embedded Tomcat, JAR vs WAR, BeanFactory vs ApplicationContext.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">2. Dependency Injection & Stereotypes</p>
+                  <p className="text-xs text-gray-400">Constructor Injection, `@Component`, `@Controller`, `@RestController`, `@Service`, `@Repository`.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">3. Controller Inputs & Mappings</p>
+                  <p className="text-xs text-gray-400">`@RequestMapping`, `@PathVariable`, `@RequestParam`, `@RequestBody`, Jackson conversion, `@RequestPart`.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">4. Spring Data JPA & ORM</p>
+                  <p className="text-xs text-gray-400">JDBC &rarr; Hibernate &rarr; JPA. `@Entity`, `@Id`, `@Column`, Entity Lifecycle (Transient, Persistent, Detached, Removed).</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">5. SOLID Principles & Profiling</p>
+                  <p className="text-xs text-gray-400">SRP, OCP, LSP, ISP, DIP code examples; `@Primary`, `@Qualifier`, `@Bean`, `@Profile` (`dev`/`prod`), Actuator.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">6. Bean Lifecycle & Spring AOP</p>
+                  <p className="text-xs text-gray-400">`@ComponentScan`, `@PostConstruct`, `InitializingBean`, `@PreDestroy`, Aspect, Pointcuts & JDK vs CGLIB Proxies.</p>
                 </div>
               </div>
-            ) : (
-              <div className="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-gray-300">
-                <div className="text-blue-400 font-semibold">// Spring Boot & AOP Aspect Sample (Page 74 in Spring Boot Notes)</div>
-                <pre className="text-gray-400 overflow-x-auto p-3 bg-slate-900/90 rounded border border-slate-800">
-{`@Aspect
-@Component
-public class LoggingAspect {
-    @Before("execution(* com.example.service.*.*(..))")
-    public void logBeforeExecution(JoinPoint joinPoint) {
-        System.out.println("Executing service method: " + joinPoint.getSignature().getName());
-    }
-}
-
-@RestController
-@RequestMapping("/api/users")
-public class UserController {
-    private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService; // Constructor Injection (Best Practice)
-    }
-
-    @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
-        return userService.findById(id);
-    }
-}`}
-                </pre>
-              </div>
-            )
+            </div>
           ) : activePreviewNote === 'c-100-coding' ? (
-            previewTab === 'syllabus' ? (
-              <div className="space-y-4">
-                <h4 className="font-semibold text-white text-base flex items-center space-x-2">
-                  <FileCode className="w-4 h-4 text-amber-400" />
-                  <span>C 100 Solved Programs Breakdown (110 Pages):</span>
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">1. Basics & I/O (Ex 1–10)</p>
-                    <p className="text-xs text-gray-400">Hello World, printf/scanf, ASCII values, quotient/remainder, data type sizes, swapping & even/odd.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">2. Branching & Loops (Ex 11–35)</p>
-                    <p className="text-xs text-gray-400">Vowel check, quadratic roots, leap year, Fibonacci, GCD/LCM, Armstrong numbers & prime ranges.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">3. Functions & Recursion (Ex 46–55)</p>
-                    <p className="text-xs text-gray-400">Sum of natural numbers, recursive factorial, GCD recursion, sentence reversal & Tower of Hanoi.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">4. Arrays & Matrices (Ex 56–72)</p>
-                    <p className="text-xs text-gray-400">Array average, min/max, Bubble Sort, Linear/Binary search, matrix multiplication & transpose.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">5. Pointers & Strings (Ex 73–88)</p>
-                    <p className="text-xs text-gray-400">Call by reference, dynamic memory (malloc/calloc), pointer arithmetic, string sorting & anagrams.</p>
-                  </div>
-                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
-                    <p className="font-bold text-white">6. Structs, Files & Patterns (Ex 89–100)</p>
-                    <p className="text-xs text-gray-400">Student structs, file read/write (`fopen`/`fgets`), pyramids, Pascal triangle & hourglass patterns.</p>
-                  </div>
+            <div className="space-y-4">
+              <h4 className="font-semibold text-white text-base flex items-center space-x-2">
+                <FileCode className="w-4 h-4 text-amber-400" />
+                <span>C 100 Solved Programs Breakdown (110 Pages):</span>
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">1. Basics & I/O (Ex 1–10)</p>
+                  <p className="text-xs text-gray-400">Hello World, printf/scanf, ASCII values, quotient/remainder, data type sizes, swapping & even/odd.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">2. Branching & Loops (Ex 11–35)</p>
+                  <p className="text-xs text-gray-400">Vowel check, quadratic roots, leap year, Fibonacci, GCD/LCM, Armstrong numbers & prime ranges.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">3. Functions & Recursion (Ex 46–55)</p>
+                  <p className="text-xs text-gray-400">Sum of natural numbers, recursive factorial, GCD recursion, sentence reversal & Tower of Hanoi.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">4. Arrays & Matrices (Ex 56–72)</p>
+                  <p className="text-xs text-gray-400">Array average, min/max, Bubble Sort, Linear/Binary search, matrix multiplication & transpose.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">5. Pointers & Strings (Ex 73–88)</p>
+                  <p className="text-xs text-gray-400">Call by reference, dynamic memory (malloc/calloc), pointer arithmetic, string sorting & anagrams.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">6. Structs, Files & Patterns (Ex 89–100)</p>
+                  <p className="text-xs text-gray-400">Student structs, file read/write (`fopen`/`fgets`), pyramids, Pascal triangle & hourglass patterns.</p>
                 </div>
               </div>
-            ) : (
-              <div className="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-gray-300">
-                <div className="text-amber-400 font-semibold">// Tower of Hanoi Recursive C Code (Ex 54 in 100 Solved Programs)</div>
-                <pre className="text-gray-400 overflow-x-auto p-3 bg-slate-900/90 rounded border border-slate-800">
-{`#include <stdio.h>
-
-void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod) {
-    if (n == 1) {
-        printf("Move disk 1 from rod %c to rod %c\\n", from_rod, to_rod);
-        return;
-    }
-    towerOfHanoi(n - 1, from_rod, aux_rod, to_rod);
-    printf("Move disk %d from rod %c to rod %c\\n", n, from_rod, to_rod);
-    towerOfHanoi(n - 1, aux_rod, to_rod, from_rod);
-}
-
-int main() {
-    int n = 3; 
-    towerOfHanoi(n, 'A', 'C', 'B');
-    return 0;
-}`}
-                </pre>
-              </div>
-            )
-          ) : previewTab === 'syllabus' ? (
+            </div>
+          ) : (
             <div className="space-y-4">
               <h4 className="font-semibold text-white text-base flex items-center space-x-2">
                 <BookMarked className="w-4 h-4 text-purple-400" />
@@ -1199,32 +1034,6 @@ int main() {
                   <p className="text-xs text-gray-400">`struct`, `union`, `enum`, file handles (`fopen`, `fprintf`), bitwise operators & macros (`#define`).</p>
                 </div>
               </div>
-            </div>
-          ) : (
-            <div className="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-gray-300">
-              <div className="text-purple-400 font-semibold">// Dynamic Memory Allocation Sample (Chapter 4 in C Textbook)</div>
-              <pre className="text-gray-400 overflow-x-auto p-3 bg-slate-900/90 rounded border border-slate-800">
-{`#include <stdio.h>
-#include <stdlib.h>
-
-int main() {
-    int num_elements = 4;
-    int *arr = (int*) calloc(num_elements, sizeof(int));
-    if (arr == NULL) {
-        printf("Heap Allocation Failed!\\n");
-        return 1;
-    }
-    
-    for (int i = 0; i < num_elements; i++) {
-        arr[i] = (i + 1) * 10;
-        printf("arr[%d] = %d\\n", i, arr[i]);
-    }
-    
-    free(arr);
-    arr = NULL;
-    return 0;
-}`}
-              </pre>
             </div>
           )}
         </section>
