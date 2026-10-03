@@ -69,10 +69,6 @@ async function handleVerificationAndDownload(
       serverFile: 'c-textbook-notes.pdf',
       downloadName: 'c-programming-master-textbook.pdf',
     },
-    'c-combo': {
-      serverFile: 'c-combo-notes.pdf',
-      downloadName: 'c-programming-complete-combo.pdf',
-    },
     'mysql': {
       serverFile: 'mysql-notes.pdf',
       downloadName: 'mysql-8-complete-master-textbook.pdf',

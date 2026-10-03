@@ -43,7 +43,7 @@ export default function NotesPage() {
         </span>
         <Flame className="w-4 h-4 text-amber-400 animate-bounce" />
         <span>
-          <strong>FLASH SALE:</strong> 200+ Cognizant Java Q&A <strong className="text-amber-300">₹49</strong> | MySQL <strong className="text-cyan-300">₹49</strong> | Java <strong className="text-emerald-300">₹49</strong> | Spring Boot <strong className="text-blue-300">₹69</strong> | C Solved <strong className="text-amber-300">₹39</strong> | <strong>C Combo ₹59!</strong>
+          <strong>FLASH SALE:</strong> 200+ Cognizant Java Q&A <strong className="text-amber-300">₹49</strong> | MySQL <strong className="text-cyan-300">₹49</strong> | Java <strong className="text-emerald-300">₹49</strong> | Spring Boot <strong className="text-blue-300">₹69</strong> | C Notes <strong className="text-amber-300">₹39!</strong>
         </span>
       </div>
 
@@ -142,7 +142,7 @@ export default function NotesPage() {
         <section className="text-center space-y-6 pt-4">
           <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-950/80 via-amber-950/80 to-rose-950/80 border border-rose-500/40 px-4 py-1.5 rounded-full text-xs text-rose-200 font-semibold shadow-inner">
             <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
-            <span>⏳ EXCLUSIVE DISCOUNTS: 200+ Cognizant Q&A ₹49 • MySQL ₹49 • Java ₹49 • C Combo ₹59!</span>
+            <span>⏳ EXCLUSIVE DISCOUNTS: 200+ Cognizant Q&A ₹49 • MySQL ₹49 • Java ₹49 • C Notes ₹39!</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
@@ -395,19 +395,19 @@ export default function NotesPage() {
           </div>
         </section>
 
-        {/* SECTION 2: C PROGRAMMING & COMBO OFFER SECTION */}
+        {/* SECTION 2: C PROGRAMMING SECTION */}
         <section id="c-section" className="space-y-6 scroll-mt-28">
           <div className="text-center space-y-2">
             <span className="text-xs text-amber-400 font-bold uppercase tracking-widest bg-amber-950/60 border border-amber-800/50 px-3 py-1 rounded-full inline-block">
               C Programming Series
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">C Programming Notes & Complete Combo</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">C Programming Notes</h2>
             <p className="text-sm text-gray-400 max-w-2xl mx-auto">
-              Individual Books at <strong className="text-emerald-400">₹39</strong> each (Actual Price <span className="line-through text-gray-500 font-bold">₹200</span>). Get the <strong>Complete Combo (Both Books - 159 Pages) for only ₹59</strong> (Actual Price <span className="line-through text-gray-500 font-bold">₹250</span>)!
+              Individual Books at <strong className="text-emerald-400">₹39</strong> each (Actual Price <span className="line-through text-gray-500 font-bold">₹200</span>). High-quality C programming study guides with 100 Solved Programs and Master Textbook Notes.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-6">
             {/* Card 1: C 100 Master Solved Programs */}
             <div className="bg-gradient-to-b from-[#111c2e] to-[#0d1522] border-2 border-emerald-500/40 rounded-2xl p-6 space-y-5 shadow-xl relative flex flex-col justify-between">
               <div className="space-y-4">
@@ -540,64 +540,6 @@ export default function NotesPage() {
                   priceINR="39"
                   notesTitle="C Programming Master Textbook Notes"
                   buttonLabel="Pay ₹39 & Download Textbook Notes"
-                />
-              </div>
-            </div>
-
-            {/* Card 3: C Programming Complete Combo (BEST VALUE - BOTH BOOKS!) */}
-            <div className="bg-gradient-to-b from-[#1c122c] to-[#120b1f] border-2 border-purple-500/60 rounded-2xl p-6 space-y-5 shadow-2xl glow-blue relative flex flex-col justify-between transform md:-translate-y-1">
-              <div className="absolute -top-3 right-4 bg-gradient-to-r from-amber-400 to-rose-500 text-slate-950 text-[10px] font-black px-3 py-0.5 rounded-full uppercase tracking-wider animate-pulse flex items-center space-x-1">
-                <Flame className="w-3 h-3" />
-                <span>BEST VALUE COMBO</span>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-purple-300 bg-purple-950/90 border border-purple-800 px-2.5 py-1 rounded flex items-center space-x-1">
-                    <Package className="w-3.5 h-3.5 mr-1 text-purple-400" />
-                    159 Pages • Both Books Included
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-white">C Complete Combo Pack</h3>
-                  <p className="text-xs text-gray-300 mt-1">Get BOTH 100 Solved Programs + Master Textbook Notes in 1 single package!</p>
-                </div>
-
-                <div className="bg-slate-900/90 border border-purple-800/60 rounded-xl p-3 space-y-1">
-                  <div className="flex items-center justify-between text-xs text-gray-400">
-                    <span>Actual Combo Price:</span>
-                    <span className="line-through font-bold text-gray-400">₹250</span>
-                  </div>
-                  <div className="flex items-center justify-between border-t border-purple-800/60 pt-1.5">
-                    <span className="text-xs text-purple-300 font-bold">Combo Offer Price:</span>
-                    <span className="text-3xl font-black text-emerald-400">₹59</span>
-                  </div>
-                  <p className="text-[10px] text-purple-300 text-right font-semibold">You Save ₹191 (76% OFF!)</p>
-                </div>
-
-                <ul className="space-y-2 text-xs text-gray-200">
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-purple-400 flex-shrink-0" />
-                    <span><strong>1 Click Downloads BOTH PDF Books (159 Pages)</strong></span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-purple-400 flex-shrink-0" />
-                    <span>Includes 100 Master Solved Programs (110 Pages)</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-purple-400 flex-shrink-0" />
-                    <span>Includes Master Textbook Notes (49 Pages)</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="pt-2">
-                <RazorpayButton
-                  noteId="c-combo"
-                  priceINR="59"
-                  notesTitle="C Programming Complete Combo Pack (Both Books - 159 Pages)"
-                  buttonLabel="Pay ₹59 & Download Both C Books"
                 />
               </div>
             </div>

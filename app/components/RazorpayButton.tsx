@@ -72,7 +72,6 @@ export default function RazorpayButton({
         'java': 'java-programming-notes.pdf',
         'c-100-coding': 'c-100-master-solved-programs.pdf',
         'c-textbook': 'c-programming-master-textbook.pdf',
-        'c-combo': 'c-programming-complete-combo.pdf',
         'mysql': 'mysql-8-complete-master-textbook.pdf',
         'java-interview': 'cognizant-200-java-interview-guide.pdf',
       };

@@ -14,7 +14,6 @@ export async function POST(req: Request) {
       'spring-boot': 69,
       'c-100-coding': 39,
       'c-textbook': 39,
-      'c-combo': 59,
       'mysql': 49,
       'java-interview': 49,
     };
@@ -24,7 +23,6 @@ export async function POST(req: Request) {
       'spring-boot': 'Spring Boot & JPA Notes',
       'c-100-coding': 'C Programming 100 Solved Programs Book',
       'c-textbook': 'C Programming Master Textbook Notes',
-      'c-combo': 'C Programming Complete Combo (Both Books)',
       'mysql': 'MySQL 8.0 & SQL Complete Master Textbook',
       'java-interview': '200+ Cognizant Based Java Interview Questions Guide (232 Pages)',
     };
