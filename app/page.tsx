@@ -20,7 +20,6 @@ import {
   BookMarked,
   Package,
   Globe,
-  Hourglass,
   Table,
   Mail,
   HelpCircle,
@@ -29,7 +28,7 @@ import RazorpayButton from './components/RazorpayButton';
 
 export default function NotesPage() {
   const [activePreviewNote, setActivePreviewNote] = useState<
-    'java' | 'spring-boot' | 'c-100-coding' | 'c-textbook' | 'mysql' | 'java-interview'
+    'java' | 'spring-boot' | 'c-100-coding' | 'c-textbook' | 'mysql' | 'java-interview' | 'web-development'
   >('java');
 
   return (
@@ -124,13 +123,10 @@ export default function NotesPage() {
 
           <a
             href="#web-dev-section"
-            className="px-3.5 py-1.5 rounded-xl bg-purple-500/10 text-purple-300 border border-purple-500/30 hover:bg-purple-500/20 transition-all flex items-center space-x-1.5 relative group"
+            className="px-3.5 py-1.5 rounded-xl bg-purple-500/10 text-purple-300 border border-purple-500/30 hover:bg-purple-500/20 transition-all flex items-center space-x-1.5"
           >
             <Globe className="w-4 h-4 text-purple-400" />
-            <span>Web Development</span>
-            <span className="bg-rose-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider animate-pulse ml-1">
-              Releasing Soon
-            </span>
+            <span>HTML5 & CSS3 Notes (₹39)</span>
           </a>
         </div>
       </nav>
@@ -719,44 +715,94 @@ export default function NotesPage() {
           </div>
         </section>
 
-        {/* SECTION 5: WEB DEVELOPMENT (RELEASING SOON) SECTION */}
+        {/* SECTION 5: WEB DEVELOPMENT NOTES SECTION */}
         <section id="web-dev-section" className="space-y-6 scroll-mt-28">
           <div className="text-center space-y-2">
             <span className="text-xs text-purple-400 font-bold uppercase tracking-widest bg-purple-950/60 border border-purple-800/50 px-3 py-1 rounded-full inline-block">
-              Upcoming Course Notes
+              Web Architecture & Frontend Series
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Web Development Notes</h2>
-            <p className="text-sm text-gray-400">HTML5, CSS3, JavaScript ES6+, React.js, Node.js & Full-Stack Architecture</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">HTML5 & CSS3 Developer Handbook</h2>
+            <p className="text-sm text-gray-400">
+              Actual Price: <span className="line-through text-gray-500 font-bold">₹199</span> • Special Offer Active • 177 Comprehensive Pages
+            </p>
           </div>
 
-          <div className="max-w-3xl mx-auto bg-gradient-to-r from-purple-950/40 via-slate-900/90 to-purple-950/40 border-2 border-purple-500/40 rounded-2xl p-8 sm:p-10 text-center space-y-6 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-4 right-4 bg-rose-500/20 text-rose-300 border border-rose-500/40 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider animate-pulse flex items-center space-x-1">
-              <Hourglass className="w-3.5 h-3.5 animate-spin" />
-              <span>RELEASING SOON</span>
-            </div>
+          <div className="max-w-2xl mx-auto">
+            {/* HTML5 & CSS3 Developer Handbook Card */}
+            <div className="bg-gradient-to-b from-[#19112e] to-[#120d22] border-2 border-purple-500/40 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl glow-purple relative flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-purple-400 bg-purple-950/80 border border-purple-800 px-2.5 py-1 rounded flex items-center space-x-1">
+                    <Globe className="w-3.5 h-3.5 mr-1" />
+                    177 Pages • 23 Chapters • Edition 2026
+                  </span>
+                  <span className="bg-rose-500/20 text-rose-300 border border-rose-500/40 text-xs font-bold px-2.5 py-1 rounded">
+                    HOT OFFER (80% OFF)
+                  </span>
+                </div>
 
-            <div className="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mx-auto shadow-inner">
-              <Globe className="w-8 h-8" />
-            </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">HTML5 & CSS3 Complete Developer Handbook</h3>
+                  <p className="text-xs text-gray-400 mt-1">
+                    TechBridge Official Curriculum Master Notes — Semantic HTML5, Modern Forms, CSS Specificity, Box Model, Flexbox (1D) & CSS Grid (2D).
+                  </p>
+                </div>
 
-            <div className="space-y-3">
-              <h3 className="text-2xl font-bold text-white">Full-Stack Web Development Master Class Notes</h3>
-              <p className="text-sm text-gray-300 max-w-xl mx-auto leading-relaxed">
-                Comprehensive handwritten notes covering HTML5 Semantic Layouts, CSS3 Flexbox/Grid, JavaScript Async/Await, DOM Manipulation, React.js Hooks, and Express/Node.js REST APIs are currently in preparation!
-              </p>
-            </div>
+                <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 space-y-1">
+                  <div className="flex items-center justify-between text-xs text-gray-400">
+                    <span>Actual Price:</span>
+                    <span className="line-through font-bold text-gray-400">₹199</span>
+                  </div>
+                  <div className="flex items-center justify-between border-t border-slate-800/80 pt-2">
+                    <span className="text-xs text-purple-400 font-bold">Offer Price:</span>
+                    <span className="text-3xl font-black text-white">₹39</span>
+                  </div>
+                  <p className="text-[11px] text-purple-400 text-right font-semibold">You Save ₹160 (80% OFF)</p>
+                </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-purple-300 font-semibold pt-2">
-              <span className="bg-slate-950/80 border border-purple-800/50 px-3 py-1.5 rounded-lg">HTML5 & CSS3</span>
-              <span className="bg-slate-950/80 border border-purple-800/50 px-3 py-1.5 rounded-lg">Modern JavaScript ES6+</span>
-              <span className="bg-slate-950/80 border border-purple-800/50 px-3 py-1.5 rounded-lg">React.js & Next.js</span>
-              <span className="bg-slate-950/80 border border-purple-800/50 px-3 py-1.5 rounded-lg">Node.js & MongoDB</span>
-            </div>
+                <ul className="space-y-2.5 text-xs sm:text-sm text-gray-300">
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                    <span>Web Architecture, Client-Server Flow, DOM Tree & HTML5 Semantic Layouts</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                    <span>Modern Forms, Inputs, Validation Constraints & Accessible Tables</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                    <span>CSS Selectors, Combinators, Specificity Hierarchy & Box Model (`border-box`)</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                    <span>Flexbox 1D & CSS Grid 2D Complete Layout Systems with Real Visuals</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle2 className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                    <span>Responsive Breakpoints, Mobile-First Design & Media Queries</span>
+                  </li>
+                </ul>
+              </div>
 
-            <div className="pt-2">
-              <div className="inline-flex items-center space-x-2 text-xs font-extrabold text-amber-300 bg-amber-950/60 border border-amber-800/50 px-4 py-2 rounded-xl">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>Status: In Final Editing & Verification Phase • Stay Tuned!</span>
+              <div className="space-y-3 pt-2">
+                <button
+                  onClick={() => {
+                    setActivePreviewNote('web-development');
+                    const previewEl = document.getElementById('preview-section');
+                    previewEl?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="w-full py-2 text-xs font-bold text-purple-400 bg-purple-950/40 hover:bg-purple-950/80 border border-purple-800/50 rounded-lg transition-all flex items-center justify-center space-x-1"
+                >
+                  <span>Preview HTML5 & CSS3 Syllabus & Breakdown</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+
+                <RazorpayButton
+                  noteId="web-development"
+                  priceINR="39"
+                  notesTitle="HTML5 & CSS3 Complete Developer Handbook (177 Pages)"
+                  buttonLabel="Pay ₹39 & Download HTML5 & CSS3 Handbook"
+                />
               </div>
             </div>
           </div>
@@ -815,6 +861,16 @@ export default function NotesPage() {
                 Spring Boot (₹69)
               </button>
               <button
+                onClick={() => setActivePreviewNote('web-development')}
+                className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
+                  activePreviewNote === 'web-development'
+                    ? 'bg-purple-500 text-slate-950 shadow'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                HTML5 & CSS3 (₹39)
+              </button>
+              <button
                 onClick={() => setActivePreviewNote('c-100-coding')}
                 className={`px-2.5 py-1 text-xs font-bold rounded transition-all ${
                   activePreviewNote === 'c-100-coding'
@@ -837,7 +893,40 @@ export default function NotesPage() {
             </div>
           </div>
 
-          {activePreviewNote === 'java-interview' ? (
+          {activePreviewNote === 'web-development' ? (
+            <div className="space-y-4">
+              <h4 className="font-semibold text-white text-base flex items-center space-x-2">
+                <Globe className="w-4 h-4 text-purple-400" />
+                <span>HTML5 & CSS3 Developer Handbook Breakdown (177 Pages • 23 Chapters):</span>
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300 pt-1">
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">1. Web Architecture & HTML5 Semantics (Ch 1–4)</p>
+                  <p className="text-xs text-gray-400">HTTP/HTTPS flow, DOM tree, doctype, character sets, &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;article&gt;, &lt;section&gt;, &lt;aside&gt;, &lt;footer&gt;, &lt;figure&gt; &amp; &lt;figcaption&gt;.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">2. Multimedia, Tables & Modern Forms (Ch 5–8)</p>
+                  <p className="text-xs text-gray-400">&lt;picture&gt;, &lt;video&gt;, &lt;audio&gt;, accessible tables (&lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;), inputs, &lt;select&gt;, &lt;datalist&gt;, validation attributes &amp; regex patterns.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">3. CSS Selectors, Pseudo-Classes & Elements (Ch 9–12)</p>
+                  <p className="text-xs text-gray-400">Element, class, id, attribute selectors, combinators, :hover, :focus, :nth-child(), :is(), :where(), ::before, ::after &amp; marker.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">4. Specificity Hierarchy & Box Model (Ch 13–16)</p>
+                  <p className="text-xs text-gray-400">Cascade calculation (Inline &gt; ID &gt; Class &gt; Element), !important, content-box vs border-box, margin collapsing &amp; overflow handling.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">5. CSS Flexbox 1D Layout System (Ch 17–19)</p>
+                  <p className="text-xs text-gray-400">Flex containers vs items, flex-direction, justify-content, align-items, flex-wrap, gap, flex-grow, flex-shrink &amp; auto margins.</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl space-y-1">
+                  <p className="font-bold text-white">6. CSS Grid 2D System & Media Queries (Ch 20–23)</p>
+                  <p className="text-xs text-gray-400">grid-template-columns, grid-template-rows, fr units, minmax(), repeat(), grid-area, responsive breakpoints &amp; mobile-first media queries.</p>
+                </div>
+              </div>
+            </div>
+          ) : activePreviewNote === 'java-interview' ? (
             <div className="space-y-4">
               <h4 className="font-semibold text-white text-base flex items-center space-x-2">
                 <HelpCircle className="w-4 h-4 text-amber-400" />

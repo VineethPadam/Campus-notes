@@ -49,7 +49,17 @@ export default function RazorpayButton({
     noteId?: string;
   }) => {
     try {
-      setStatusText(`Downloading ${noteId === 'spring-boot' ? 'Spring Boot' : noteId === 'java-interview' ? '200+ Cognizant Interview Guide' : 'Java'} Notes PDF...`);
+      const titleNameMap: Record<string, string> = {
+        'spring-boot': 'Spring Boot',
+        'java-interview': '200+ Cognizant Interview Guide',
+        'mysql': 'MySQL 8.0 Textbook',
+        'c-100-coding': 'C 100 Programs',
+        'c-textbook': 'C Textbook',
+        'web-development': 'HTML5 & CSS3 Handbook',
+        'java': 'Java',
+      };
+      const noteLabel = titleNameMap[noteId || 'java'] || 'Notes';
+      setStatusText(`Downloading ${noteLabel} PDF...`);
       const response = await fetch('/api/verify-and-download', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -74,6 +84,7 @@ export default function RazorpayButton({
         'c-textbook': 'c-programming-master-textbook.pdf',
         'mysql': 'mysql-8-complete-master-textbook.pdf',
         'java-interview': 'cognizant-200-java-interview-guide.pdf',
+        'web-development': 'html5-css3-developer-handbook.pdf',
       };
 
       a.href = url;
@@ -179,7 +190,7 @@ export default function RazorpayButton({
     }
   };
 
-  const defaultButtonLabel = `Pay ₹${priceINR} & Download ${noteId === 'spring-boot' ? 'Spring Boot' : noteId === 'java-interview' ? '200+ Cognizant Interview Guide' : 'Java'} Notes`;
+  const defaultButtonLabel = `Pay ₹${priceINR} & Download ${noteId === 'spring-boot' ? 'Spring Boot' : noteId === 'java-interview' ? '200+ Cognizant Interview Guide' : noteId === 'web-development' ? 'HTML5 & CSS3 Handbook' : 'Java'} Notes`;
 
   return (
     <div className="w-full flex flex-col items-center justify-center space-y-3">

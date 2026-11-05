@@ -77,6 +77,10 @@ async function handleVerificationAndDownload(
       serverFile: 'java-interview-notes.pdf',
       downloadName: 'cognizant-200-java-interview-guide.pdf',
     },
+    'web-development': {
+      serverFile: 'web-development-notes.pdf',
+      downloadName: 'html5-css3-developer-handbook.pdf',
+    },
   };
 
   const fileConfig = fileNameMap[noteId] || fileNameMap['java'];
