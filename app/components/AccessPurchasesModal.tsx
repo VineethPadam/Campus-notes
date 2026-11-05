@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { BookOpen, X, Download, Copy, Check, Lock, AlertCircle, Sparkles, Loader2 } from 'lucide-react';
+import { BookOpen, X, Download, Copy, Check, Lock, AlertCircle, Sparkles, Loader2, RefreshCw } from 'lucide-react';
 
 interface PurchaseItem {
   id: string;
@@ -23,13 +23,14 @@ interface AccessPurchasesModalProps {
 export default function AccessPurchasesModal({ isOpen, onClose }: AccessPurchasesModalProps) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [searched, setSearched] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [matchingPurchases, setMatchingPurchases] = useState<PurchaseItem[]>([]);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
 
   useEffect(() => {
     if (isOpen) {
-      // Auto-populate saved phone number if previously used
       const savedPhone = localStorage.getItem('campus_user_phone') || '';
       if (savedPhone) {
         setPhoneNumber(savedPhone);
@@ -37,35 +38,89 @@ export default function AccessPurchasesModal({ isOpen, onClose }: AccessPurchase
       } else {
         setSearched(false);
         setMatchingPurchases([]);
+        setErrorMessage('');
       }
     }
   }, [isOpen]);
 
-  const handleLookup = (phoneToSearch?: string) => {
+  const handleLookup = async (phoneToSearch?: string) => {
     const raw = phoneToSearch || phoneNumber;
-    const clean = raw.replace(/\D/g, '');
+    const clean = raw.replace(/\D/g, '').slice(-10);
     setSearched(true);
+    setErrorMessage('');
 
-    if (clean.length < 5) {
+    if (clean.length !== 10) {
+      setErrorMessage('Please enter a valid 10-digit mobile number.');
       setMatchingPurchases([]);
       return;
     }
 
     try {
+      setLoading(true);
+
+      // 1. Read existing local purchases from browser cache
+      let localPurchases: PurchaseItem[] = [];
       const stored = localStorage.getItem('campus_notes_purchases');
       if (stored) {
-        const all: PurchaseItem[] = JSON.parse(stored);
-        const filtered = all.filter((p) => {
-          const pClean = (p.phone || '').replace(/\D/g, '');
-          return pClean.endsWith(clean.slice(-10)) || clean.endsWith(pClean.slice(-10));
-        });
-        setMatchingPurchases(filtered);
-      } else {
-        setMatchingPurchases([]);
+        try {
+          const all: PurchaseItem[] = JSON.parse(stored);
+          localPurchases = all.filter((p) => {
+            const pClean = (p.phone || '').replace(/\D/g, '');
+            return pClean.endsWith(clean) || clean.endsWith(pClean);
+          });
+        } catch (e) {
+          console.error('Error parsing local purchases:', e);
+        }
       }
-    } catch (e) {
-      console.error('Error reading purchases:', e);
-      setMatchingPurchases([]);
+
+      // 2. Fetch live & past verified purchases directly from Razorpay backend API
+      let serverPurchases: PurchaseItem[] = [];
+      try {
+        const res = await fetch('/api/find-purchases', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone: clean }),
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && Array.isArray(data.purchases)) {
+            serverPurchases = data.purchases;
+          }
+        }
+      } catch (apiErr) {
+        console.error('API find-purchases error:', apiErr);
+      }
+
+      // 3. Merge server and local records (deduplicate by paymentId)
+      const mergedMap = new Map<string, PurchaseItem>();
+      [...serverPurchases, ...localPurchases].forEach((item) => {
+        const key = item.paymentId || item.id || `${item.noteId}_${item.purchasedAt}`;
+        if (!mergedMap.has(key)) {
+          mergedMap.set(key, item);
+        }
+      });
+
+      const mergedList = Array.from(mergedMap.values());
+      setMatchingPurchases(mergedList);
+
+      // 4. Save merged purchases back to localStorage for instant offline access
+      localStorage.setItem('campus_user_phone', clean);
+      if (mergedList.length > 0) {
+        try {
+          const allStored: PurchaseItem[] = stored ? JSON.parse(stored) : [];
+          const rest = allStored.filter((p) => {
+            const pClean = (p.phone || '').replace(/\D/g, '');
+            return !pClean.endsWith(clean) && !clean.endsWith(pClean);
+          });
+          localStorage.setItem('campus_notes_purchases', JSON.stringify([...mergedList, ...rest]));
+        } catch (e) {}
+      }
+    } catch (err: any) {
+      console.error('Error looking up purchases:', err);
+      setErrorMessage('Failed to search purchases. Please check your network connection.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -86,7 +141,7 @@ export default function AccessPurchasesModal({ isOpen, onClose }: AccessPurchase
           phone: item.phone,
           razorpay_payment_id: item.paymentId,
           razorpay_order_id: item.orderId,
-          isMock: true,
+          isMock: false,
         }),
       });
 
@@ -132,7 +187,7 @@ export default function AccessPurchasesModal({ isOpen, onClose }: AccessPurchase
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white bg-slate-800/60 hover:bg-slate-800 p-2 rounded-full transition-all"
+          className="absolute top-4 right-4 text-gray-400 hover:text-white bg-slate-800/60 hover:bg-slate-800 p-2 rounded-full transition-all cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -146,7 +201,7 @@ export default function AccessPurchasesModal({ isOpen, onClose }: AccessPurchase
           </div>
           <h3 className="text-2xl font-bold text-white">Access Your Bought Books</h3>
           <p className="text-xs text-gray-400">
-            Enter the 10-digit mobile number used during payment to view and download your notes.
+            Enter the 10-digit mobile number used during payment to view and download all your purchased notes.
           </p>
         </div>
 
@@ -157,7 +212,7 @@ export default function AccessPurchasesModal({ isOpen, onClose }: AccessPurchase
             <span>Document Security & Password Pattern</span>
           </div>
           <p className="text-[11px] leading-relaxed">
-            Every downloaded PDF is encrypted with your personal password:
+            Every downloaded PDF is protected with your personal password:
             <span className="font-mono font-bold text-amber-300 bg-amber-950/80 px-1.5 py-0.5 rounded mx-1">
               [Last 5 digits of your phone]@tech
             </span>
@@ -181,7 +236,10 @@ export default function AccessPurchasesModal({ isOpen, onClose }: AccessPurchase
                 type="tel"
                 maxLength={10}
                 value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ''))}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value.replace(/\D/g, ''));
+                  setErrorMessage('');
+                }}
                 onKeyDown={(e) => e.key === 'Enter' && handleLookup()}
                 placeholder="98765 43210"
                 className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-12 pr-4 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
@@ -189,28 +247,63 @@ export default function AccessPurchasesModal({ isOpen, onClose }: AccessPurchase
             </div>
             <button
               onClick={() => handleLookup()}
-              className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all text-sm flex items-center justify-center space-x-1.5 cursor-pointer shadow-lg shadow-emerald-500/20"
+              disabled={loading}
+              className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all text-sm flex items-center justify-center space-x-1.5 cursor-pointer shadow-lg shadow-emerald-500/20 disabled:opacity-60"
             >
-              <Sparkles className="w-4 h-4" />
-              <span>Find My Books</span>
+              {loading ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin text-slate-950" />
+                  <span>Searching...</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-4 h-4" />
+                  <span>Find My Books</span>
+                </>
+              )}
             </button>
           </div>
+          {errorMessage && (
+            <p className="text-xs text-rose-400 font-semibold flex items-center space-x-1">
+              <AlertCircle className="w-3.5 h-3.5" />
+              <span>{errorMessage}</span>
+            </p>
+          )}
         </div>
 
+        {/* Loading Indicator */}
+        {loading && (
+          <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-6 text-center space-y-2">
+            <Loader2 className="w-6 h-6 animate-spin text-emerald-400 mx-auto" />
+            <p className="text-xs text-gray-300 font-semibold">
+              Searching Razorpay payment records for +91 {phoneNumber}...
+            </p>
+          </div>
+        )}
+
         {/* Results Section */}
-        {searched && (
+        {!loading && searched && (
           <div className="space-y-3 pt-2 border-t border-slate-800">
             {matchingPurchases.length > 0 ? (
               <div className="space-y-3">
-                <p className="text-xs text-gray-400">
-                  Found <strong className="text-emerald-400">{matchingPurchases.length}</strong> purchase(s) for +91{' '}
-                  <span className="font-mono text-white">{phoneNumber}</span>:
-                </p>
+                <div className="flex items-center justify-between text-xs text-gray-400">
+                  <p>
+                    Found <strong className="text-emerald-400">{matchingPurchases.length}</strong> verified purchase(s) for +91{' '}
+                    <span className="font-mono text-white">{phoneNumber}</span>:
+                  </p>
+                  <button
+                    onClick={() => handleLookup()}
+                    className="text-gray-400 hover:text-white flex items-center space-x-1 text-[11px]"
+                  >
+                    <RefreshCw className="w-3 h-3" />
+                    <span>Refresh</span>
+                  </button>
+                </div>
 
                 {matchingPurchases.map((item) => (
                   <div
                     key={item.id}
-                    className="bg-slate-900/90 border border-slate-700/80 rounded-xl p-4 space-y-3 hover:border-emerald-500/50 transition-all"
+                    className="bg-slate-900/90 border border-slate-700/80 rounded-xl p-4 space-y-3 hover:border-emerald-500/50 transition-all shadow-lg"
                   >
                     <div className="flex flex-wrap items-start justify-between gap-2">
                       <div>
@@ -220,7 +313,7 @@ export default function AccessPurchasesModal({ isOpen, onClose }: AccessPurchase
                         </p>
                       </div>
                       <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2 py-0.5 rounded">
-                        PAID
+                        VERIFIED PURCHASE
                       </span>
                     </div>
 
@@ -232,7 +325,7 @@ export default function AccessPurchasesModal({ isOpen, onClose }: AccessPurchase
                       </div>
                       <button
                         onClick={() => handleCopyPassword(item.id, item.password)}
-                        className="text-[11px] font-semibold text-emerald-400 hover:text-emerald-300 flex items-center space-x-1 bg-slate-900 px-2 py-1 rounded border border-slate-700"
+                        className="text-[11px] font-semibold text-emerald-400 hover:text-emerald-300 flex items-center space-x-1 bg-slate-900 px-2 py-1 rounded border border-slate-700 cursor-pointer"
                       >
                         {copiedId === item.id ? (
                           <>
@@ -272,9 +365,9 @@ export default function AccessPurchasesModal({ isOpen, onClose }: AccessPurchase
             ) : (
               <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-4 text-center space-y-2">
                 <AlertCircle className="w-6 h-6 text-amber-400 mx-auto" />
-                <p className="text-xs font-semibold text-white">No purchases found on this browser for +91 {phoneNumber}</p>
+                <p className="text-xs font-semibold text-white">No purchases found for +91 {phoneNumber}</p>
                 <p className="text-[11px] text-gray-400 max-w-md mx-auto leading-relaxed">
-                  Purchases are automatically remembered on the browser where you completed the payment. If you paid on another mobile phone or device, please open this site on that device.
+                  Please verify that this is the exact 10-digit mobile number entered during the Razorpay payment.
                 </p>
                 <p className="text-[11px] text-emerald-400 pt-1">
                   Need assistance? Email us at <strong className="underline">neso.vvy123@gmail.com</strong> with your phone number and we will send your notes immediately.

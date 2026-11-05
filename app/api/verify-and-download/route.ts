@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
+import Razorpay from 'razorpay';
 import { encryptPDF } from '@pdfsmaller/pdf-encrypt-lite';
 
 async function handleVerificationAndDownload(
@@ -28,6 +29,7 @@ async function handleVerificationAndDownload(
     );
   }
 
+  const key_id = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_placeholder_key_id';
   const key_secret = process.env.RAZORPAY_KEY_SECRET || 'placeholder_secret_key';
 
   // Verify cryptographic signature if real order & secret exist
@@ -50,6 +52,28 @@ async function handleVerificationAndDownload(
         </html>`,
         { status: 403, headers: { 'Content-Type': 'text/html' } }
       );
+    }
+  } else if (!isMock && !razorpay_signature && razorpay_payment_id.startsWith('pay_') && !key_id.includes('placeholder')) {
+    // If re-downloading from Library using paymentId without signature, verify with Razorpay API
+    try {
+      const razorpay = new Razorpay({ key_id, key_secret });
+      const payment = await razorpay.payments.fetch(razorpay_payment_id);
+      if (payment.status !== 'captured') {
+        return new NextResponse(
+          `<html>
+            <body style="font-family:sans-serif; background:#0b0f17; color:#fff; display:flex; justify-content:center; align-items:center; height:100vh; text-align:center;">
+              <div>
+                <h2 style="color:#ef4444;">Verification Failed</h2>
+                <p style="color:#9ca3af;">Payment is not captured. Access denied.</p>
+                <a href="/" style="color:#10b981; text-decoration:underline;">Return to Website</a>
+              </div>
+            </body>
+          </html>`,
+          { status: 403, headers: { 'Content-Type': 'text/html' } }
+        );
+      }
+    } catch (fetchErr: any) {
+      console.error('Error verifying payment with Razorpay:', fetchErr.message);
     }
   }
 
