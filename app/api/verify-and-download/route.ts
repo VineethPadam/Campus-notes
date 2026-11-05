@@ -134,9 +134,14 @@ async function handleVerificationAndDownload(
     try {
       returnBuffer = await encryptPDF(fileBuffer, userPassword, {
         ownerPassword,
-        allowPrinting: true,
+        allowPrinting: false,
+        allowHighQualityPrint: false,
         allowModifying: false,
         allowCopying: false,
+        allowAnnotating: false,
+        allowFillingForms: false,
+        allowExtraction: false,
+        allowAssembly: false,
       });
     } catch (encErr) {
       console.error('PDF Encryption Warning:', encErr);
