@@ -25,11 +25,13 @@ import {
   HelpCircle,
 } from 'lucide-react';
 import RazorpayButton from './components/RazorpayButton';
+import AccessPurchasesModal from './components/AccessPurchasesModal';
 
 export default function NotesPage() {
   const [activePreviewNote, setActivePreviewNote] = useState<
     'java' | 'spring-boot' | 'c-100-coding' | 'c-textbook' | 'mysql' | 'java-interview' | 'web-development'
   >('java');
+  const [isAccessModalOpen, setIsAccessModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#0b0f17] text-gray-100 flex flex-col justify-between">
@@ -128,6 +130,14 @@ export default function NotesPage() {
             <Globe className="w-4 h-4 text-purple-400" />
             <span>HTML5 & CSS3 Notes (₹39)</span>
           </a>
+
+          <button
+            onClick={() => setIsAccessModalOpen(true)}
+            className="px-3.5 py-1.5 rounded-xl bg-amber-500/15 text-amber-300 border border-amber-500/40 hover:bg-amber-500/25 transition-all flex items-center space-x-1.5 font-bold cursor-pointer shadow-md"
+          >
+            <BookOpen className="w-4 h-4 text-amber-400" />
+            <span>Access Your Bought Books</span>
+          </button>
         </div>
       </nav>
 
@@ -162,6 +172,29 @@ export default function NotesPage() {
               <BookOpen className="w-4 h-4 text-blue-400" />
               <span>Printable PDF Format</span>
             </div>
+          </div>
+
+          {/* Document Security & Access Purchases Info Bar */}
+          <div className="max-w-2xl mx-auto bg-gradient-to-r from-slate-900 via-[#0d1627] to-slate-900 border border-slate-700/80 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs shadow-xl">
+            <div className="flex items-center space-x-2.5 text-left text-gray-300">
+              <Lock className="w-4 h-4 text-amber-400 flex-shrink-0" />
+              <div>
+                <span className="font-bold text-white">Document Password Protection: </span>
+                <span className="text-gray-300">
+                  All books open with:{' '}
+                  <span className="text-amber-300 font-mono font-bold bg-amber-950/80 px-2 py-0.5 rounded border border-amber-700/50">
+                    [Last 5 digits of your phone]@tech
+                  </span>
+                </span>
+              </div>
+            </div>
+            <button
+              onClick={() => setIsAccessModalOpen(true)}
+              className="w-full sm:w-auto bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 font-bold px-3.5 py-1.5 rounded-xl border border-amber-500/40 flex items-center justify-center space-x-1.5 flex-shrink-0 transition-all cursor-pointer shadow-sm"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-amber-400" />
+              <span>Access Your Bought Books</span>
+            </button>
           </div>
         </section>
 
@@ -1131,6 +1164,15 @@ export default function NotesPage() {
       {/* Footer */}
       <footer className="border-t border-gray-800/80 bg-[#0d131f] py-8 text-center text-xs text-gray-500">
         <div className="max-w-6xl mx-auto px-4 space-y-3">
+          <p>
+            <button
+              onClick={() => setIsAccessModalOpen(true)}
+              className="text-amber-400 hover:text-amber-300 font-semibold inline-flex items-center space-x-1.5 cursor-pointer bg-amber-950/40 border border-amber-600/40 px-3 py-1 rounded-lg"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Already bought a book? Click here to Access & Download Your Notes</span>
+            </button>
+          </p>
           <p className="flex items-center justify-center space-x-2 text-gray-300 font-medium">
             <Mail className="w-4 h-4 text-emerald-400" />
             <span>For any queries or support, email us at: <a href="mailto:neso.vvy123@gmail.com" className="text-emerald-400 hover:underline font-bold">neso.vvy123@gmail.com</a></span>
@@ -1139,6 +1181,12 @@ export default function NotesPage() {
           <p>Powered by Next.js, Razorpay & Vercel Serverless Functions.</p>
         </div>
       </footer>
+
+      {/* Access Purchases Modal */}
+      <AccessPurchasesModal
+        isOpen={isAccessModalOpen}
+        onClose={() => setIsAccessModalOpen(false)}
+      />
     </div>
   );
 }

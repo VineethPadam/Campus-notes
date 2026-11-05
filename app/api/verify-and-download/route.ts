@@ -2,13 +2,15 @@ import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
+import { encryptPDF } from '@pdfsmaller/pdf-encrypt-lite';
 
 async function handleVerificationAndDownload(
   razorpay_payment_id: string,
   razorpay_order_id: string,
   razorpay_signature: string,
   isMock: boolean = false,
-  noteId: string = 'java'
+  noteId: string = 'java',
+  phone: string = ''
 ) {
   // Check if payment ID exists
   if (!razorpay_payment_id && !isMock) {
@@ -95,7 +97,30 @@ async function handleVerificationAndDownload(
 
   const fileBuffer = fs.readFileSync(pdfPath);
 
-  return new NextResponse(fileBuffer, {
+  // If phone number is supplied, encrypt PDF with user password (last 5 digits + '@tech')
+  // and an owner password to block permission tampering or password removal upon resaving.
+  const cleanPhone = (phone || '').replace(/\D/g, '');
+  let returnBuffer: Uint8Array = fileBuffer;
+
+  if (cleanPhone.length >= 5) {
+    const last5 = cleanPhone.slice(-5);
+    const userPassword = `${last5}@tech`;
+    const ownerPassword = process.env.PDF_OWNER_KEY || 'CAMPUS_MASTER_SECURE_OWNER_2026';
+
+    try {
+      returnBuffer = await encryptPDF(fileBuffer, userPassword, {
+        ownerPassword,
+        allowPrinting: true,
+        allowModifying: false,
+        allowCopying: false,
+      });
+    } catch (encErr) {
+      console.error('PDF Encryption Warning:', encErr);
+      returnBuffer = fileBuffer;
+    }
+  }
+
+  return new NextResponse(returnBuffer as any, {
     status: 200,
     headers: {
       'Content-Type': 'application/pdf',
@@ -106,7 +131,7 @@ async function handleVerificationAndDownload(
   });
 }
 
-// Handle Form POST submission directly from Razorpay payment-button.js
+// Handle Form POST submission directly from Razorpay payment-button.js or client JSON
 export async function POST(req: Request) {
   try {
     let razorpay_payment_id = '';
@@ -114,6 +139,7 @@ export async function POST(req: Request) {
     let razorpay_signature = '';
     let isMock = false;
     let noteId = 'java';
+    let phone = '';
 
     const contentType = req.headers.get('content-type') || '';
 
@@ -123,6 +149,7 @@ export async function POST(req: Request) {
       razorpay_order_id = formData.get('razorpay_order_id')?.toString() || '';
       razorpay_signature = formData.get('razorpay_signature')?.toString() || '';
       noteId = formData.get('noteId')?.toString() || 'java';
+      phone = formData.get('phone')?.toString() || '';
     } else {
       const body = await req.json().catch(() => ({}));
       razorpay_payment_id = body.razorpay_payment_id || '';
@@ -130,9 +157,10 @@ export async function POST(req: Request) {
       razorpay_signature = body.razorpay_signature || '';
       isMock = body.isMock || false;
       noteId = body.noteId || 'java';
+      phone = body.phone || '';
     }
 
-    return await handleVerificationAndDownload(razorpay_payment_id, razorpay_order_id, razorpay_signature, isMock, noteId);
+    return await handleVerificationAndDownload(razorpay_payment_id, razorpay_order_id, razorpay_signature, isMock, noteId, phone);
   } catch (error: any) {
     console.error('Error in verify-and-download API:', error);
     return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 });
@@ -146,6 +174,7 @@ export async function GET(req: Request) {
   const razorpay_order_id = searchParams.get('razorpay_order_id') || '';
   const razorpay_signature = searchParams.get('razorpay_signature') || '';
   const noteId = searchParams.get('noteId') || 'java';
+  const phone = searchParams.get('phone') || '';
 
-  return await handleVerificationAndDownload(razorpay_payment_id, razorpay_order_id, razorpay_signature, false, noteId);
+  return await handleVerificationAndDownload(razorpay_payment_id, razorpay_order_id, razorpay_signature, false, noteId, phone);
 }
