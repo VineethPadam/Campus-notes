@@ -133,10 +133,14 @@ export default function NotesPage() {
 
           <button
             onClick={() => setIsAccessModalOpen(true)}
-            className="px-3.5 py-1.5 rounded-xl bg-amber-500/15 text-amber-300 border border-amber-500/40 hover:bg-amber-500/25 transition-all flex items-center space-x-1.5 font-bold cursor-pointer shadow-md"
+            className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm hover:brightness-110 transition-all flex items-center space-x-2 cursor-pointer shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-105 active:scale-95 ring-2 ring-amber-300/70"
           >
-            <BookOpen className="w-4 h-4 text-amber-400" />
-            <span>Access Your Bought Books</span>
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-950 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-950"></span>
+            </span>
+            <BookOpen className="w-4 h-4 stroke-[2.5]" />
+            <span>ACCESS YOUR BOUGHT BOOKS</span>
           </button>
         </div>
       </nav>
@@ -174,27 +178,42 @@ export default function NotesPage() {
             </div>
           </div>
 
-          {/* Document Security & Access Purchases Info Bar */}
-          <div className="max-w-2xl mx-auto bg-gradient-to-r from-slate-900 via-[#0d1627] to-slate-900 border border-slate-700/80 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs shadow-xl">
-            <div className="flex items-center space-x-2.5 text-left text-gray-300">
-              <Lock className="w-4 h-4 text-amber-400 flex-shrink-0" />
-              <div>
-                <span className="font-bold text-white">Document Password Protection: </span>
-                <span className="text-gray-300">
-                  All books open with:{' '}
-                  <span className="text-amber-300 font-mono font-bold bg-amber-950/80 px-2 py-0.5 rounded border border-amber-700/50">
-                    [Last 5 digits of your phone]@tech
-                  </span>
-                </span>
+          {/* High-Visibility Highlight Banner for Accessing Purchased Books */}
+          <div className="max-w-3xl mx-auto bg-gradient-to-r from-amber-500/20 via-orange-500/25 to-amber-500/20 border-2 border-amber-400 rounded-2xl p-5 sm:p-6 shadow-2xl shadow-amber-500/20 space-y-3 relative overflow-hidden text-left sm:text-center">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="space-y-1 text-left">
+                <div className="inline-flex items-center space-x-1.5 bg-amber-400 text-slate-950 text-[11px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Student Library Portal</span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-white">
+                  Already Purchased Notes? Access & Re-Download Here!
+                </h3>
+                <p className="text-xs text-amber-200/90 leading-relaxed">
+                  Enter your mobile number to view all your bought books, copy your password, or re-download your encrypted PDFs anytime.
+                </p>
               </div>
+
+              <button
+                onClick={() => setIsAccessModalOpen(true)}
+                className="w-full sm:w-auto bg-gradient-to-r from-amber-400 to-orange-400 hover:from-amber-300 hover:to-orange-300 text-slate-950 font-black px-6 py-3.5 rounded-xl transition-all shadow-xl shadow-amber-500/40 hover:scale-105 active:scale-95 flex items-center justify-center space-x-2 text-sm flex-shrink-0 cursor-pointer"
+              >
+                <BookOpen className="w-4 h-4 stroke-[2.5]" />
+                <span>Access Your Bought Books</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
-            <button
-              onClick={() => setIsAccessModalOpen(true)}
-              className="w-full sm:w-auto bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 font-bold px-3.5 py-1.5 rounded-xl border border-amber-500/40 flex items-center justify-center space-x-1.5 flex-shrink-0 transition-all cursor-pointer shadow-sm"
-            >
-              <BookOpen className="w-3.5 h-3.5 text-amber-400" />
-              <span>Access Your Bought Books</span>
-            </button>
+
+            <div className="pt-2 border-t border-amber-500/30 flex flex-wrap items-center justify-between text-[11px] text-gray-300 gap-2">
+              <span className="flex items-center space-x-1 text-amber-300 font-semibold">
+                <Lock className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                <span>PDF Password Format:</span>
+                <span className="font-mono bg-slate-950/80 px-1.5 py-0.5 rounded text-amber-300 border border-amber-500/40">
+                  [Last 5 digits of your phone]@tech
+                </span>
+              </span>
+              <span className="text-gray-400">Print Disabled • 100% Protected Notes</span>
+            </div>
           </div>
         </section>
 
@@ -1181,6 +1200,25 @@ export default function NotesPage() {
           <p>Powered by Next.js, Razorpay & Vercel Serverless Functions.</p>
         </div>
       </footer>
+
+      {/* Floating Sticky "Access Your Bought Books" Action Pill */}
+      <div className="fixed bottom-5 right-5 z-40">
+        <button
+          onClick={() => setIsAccessModalOpen(true)}
+          className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm py-3 px-5 rounded-full shadow-2xl shadow-amber-500/50 hover:scale-105 active:scale-95 transition-all flex items-center space-x-2 cursor-pointer border-2 border-amber-200 ring-2 ring-amber-400/40"
+          title="Access your purchased notes library"
+        >
+          <span className="flex h-2 w-2 relative">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-950 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-950"></span>
+          </span>
+          <BookOpen className="w-4 h-4 stroke-[2.5]" />
+          <span>Access Your Bought Books</span>
+          <span className="bg-slate-950 text-amber-300 text-[10px] font-black px-1.5 py-0.5 rounded-full uppercase ml-1">
+            LIBRARY
+          </span>
+        </button>
+      </div>
 
       {/* Access Purchases Modal */}
       <AccessPurchasesModal
